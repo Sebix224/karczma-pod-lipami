@@ -246,7 +246,7 @@ body.has-cart{padding-bottom:92px}
         <a href="#menu" class="btn btn-terra">Zamów online</a>
         <a href="#stolik" class="btn btn-outline">Zarezerwuj stolik</a>
       </div>
-      <ul class="info"><li>🍖 Kuchnia regionalna</li><li>🎉 Przyjęcia i imprezy</li><li><a href="tel:+48530182277">📞 530 182 277</a></li></ul>
+      <ul class="info"><li>🍖 Kuchnia regionalna</li><li>🎉 Przyjęcia i imprezy</li><li><a href="tel:+48787081383">📞 787 081 383</a></li></ul>
     </div>
     <div class="pizza-wrap" aria-hidden="true">
       <div class="board"></div>
@@ -312,7 +312,7 @@ body.has-cart{padding-bottom:92px}
       <div class="c-card">
         <h3>Adres</h3>
         <p>ul. Szpitalna 5<br>43-450 Ustroń</p>
-        <p style="margin-top:12px">Tel. <a href="tel:+48530182277">530 182 277</a><br>Facebook: Karczma Pod Lipami</p>
+        <p style="margin-top:12px">Tel. <a href="tel:+48787081383">787 081 383</a><br>Facebook: Karczma Pod Lipami</p>
       </div>
       <div class="c-card">
         <h3>Godziny otwarcia</h3>
@@ -322,7 +322,7 @@ body.has-cart{padding-bottom:92px}
       </div>
       <div class="c-card">
         <h3>Przyjęcia</h3>
-        <p>Planujesz komunię, urodziny albo spotkanie firmowe? Zadzwoń: <a href="tel:+48530182277">530 182 277</a> – ustalimy menu i termin.</p>
+        <p>Planujesz komunię, urodziny albo spotkanie firmowe? Zadzwoń: <a href="tel:+48787081383">787 081 383</a> – ustalimy menu i termin.</p>
       </div>
     </div>
     <div class="map-full"><iframe title="Mapa dojazdu: Karczma Pod Lipami" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Karczma%20Pod%20Lipami%2C%20ul.%20Szpitalna%205%2C%20Ustro%C5%84&amp;output=embed"></iframe></div>
@@ -369,7 +369,7 @@ body.has-cart{padding-bottom:92px}
   const MENU = [{"id":1,"cat":"przystawki","name":"Oscypek z grilla","desc":"Z żurawiną","price":19,"tags":["wege"],"ico":"🧀"},{"id":2,"cat":"przystawki","name":"Smalec ze skwarkami","desc":"Z ogórkiem kiszonym i chlebem","price":15,"tags":[],"ico":"🍞"},{"id":3,"cat":"zupy","name":"Kwaśnica na żeberku","desc":"Na kiszonej kapuście","price":19,"tags":[],"ico":"🥣"},{"id":4,"cat":"zupy","name":"Żurek w chlebie","desc":"Z jajkiem i kiełbasą","price":24,"tags":[],"ico":"🍞"},{"id":5,"cat":"dania","name":"Placek po zbójnicku","desc":"Z gulaszem wieprzowym i śmietaną","price":39,"tags":["ostre"],"ico":"🥘"},{"id":6,"cat":"dania","name":"Golonka pieczona","desc":"Z kapustą zasmażaną i chrzanem","price":49,"tags":[],"ico":"🍖"},{"id":7,"cat":"dania","name":"Pstrąg z masłem ziołowym","desc":"Z ziemniakami i surówką","price":46,"tags":[],"ico":"🐟"},{"id":8,"cat":"dania","name":"Pierogi z bryndzą","desc":"Okraszone skwarkami – 10 szt.","price":29,"tags":[],"ico":"🥟"},{"id":9,"cat":"desery","name":"Szarlotka na ciepło","desc":"Z lodami waniliowymi","price":18,"tags":["wege"],"ico":"🥧"},{"id":10,"cat":"napoje","name":"Kompot z suszu 0,5 l","desc":"Domowy","price":9,"tags":[],"ico":"🧃"},{"id":11,"cat":"napoje","name":"Herbata z sokiem malinowym","desc":"Dzbanek 0,5 l","price":12,"tags":[],"ico":"☕"}];
   const CATS = [["wszystko","Wszystko"],["przystawki","Przystawki"],["zupy","Zupy"],["dania","Dania główne"],["desery","Desery"],["napoje","Napoje"]];
   const FREE_FROM = 120, FEE = 10, STORE = 'karczma-pod-lipami-koszyk';
-  const RANGES = {"0":[12,21],"1":[12,21],"2":[12,21],"3":[12,21],"4":[12,21],"5":[12,22],"6":[12,22]};
+  const RANGES = {"0":[10,21],"1":[12,21],"2":[12,21],"3":[12,21],"4":[12,21],"5":[12,21],"6":[10,21]};
   const DAY_NAMES = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
   document.getElementById('hours').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(d =>
     `<li data-d="${d}"><span>${DAY_NAMES[d]}</span><span>${RANGES[d] ? `${RANGES[d][0]}:00–${RANGES[d][1]}:00` : 'nieczynne'}</span></li>`).join('');
