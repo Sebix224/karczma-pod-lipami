@@ -3,25 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Karczma Pod Lipami – Ustroń | projekt strony (demo)</title>
-<meta name="description" content="Demonstracyjny projekt strony internetowej przygotowany dla: Karczma Pod Lipami. Nie jest to oficjalna strona firmy.">
+<title>Karczma Pod Lipami – Ustroń | domowa kuchnia, przyjęcia, piwo z beczki</title>
+<meta name="description" content="Karczma Pod Lipami w Ustroniu, ul. Szpitalna 5 – domowa kuchnia polska i regionalna: golonko, rolada wołowa, pstrąg z grilla, pierogi rzemieślnicze. Menu z cenami, zamówienia na wynos, rezerwacja stolika i przyjęcia.">
+<!-- Wersja testowa do akceptacji: przed publikacją usunąć noindex i pasek testowy -->
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%233f6b3a'/%3E%3Ctext x='50%25' y='64%25' text-anchor='middle' font-family='Georgia' font-size='34' font-style='italic' fill='%23faf6ee'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#faf6ee;--paper:#efe6d6;--terra:#8a5a2b;--terra-2:#6e451e;--olive:#3f6b3a;--olive-soft:#e2ecdc;--dark:#241d16;--text:#463b2f;--muted:#87796a;--line:#e3d6c1;
-  --r:18px;--shadow:0 24px 50px -26px rgba(43,29,22,.4);
+  --cream:#faf6ee;--paper:#f1e8d8;--terra:#7a2e1f;--terra-2:#5c2115;--olive:#3f6b3a;--olive-soft:#e2ecdc;--dark:#2b1d12;--text:#463b2f;--muted:#85776a;--line:#e3d6c1;
+  --r:18px;--shadow:0 24px 50px -26px rgba(43,29,18,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select{font-family:inherit}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--dark);line-height:1.08;font-weight:600}
-.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
 section{padding:96px 0}
 .kicker{font-family:Fraunces,serif;font-style:italic;color:var(--terra);font-size:1.15rem}
 .sec-head{max-width:640px;margin-bottom:44px}
@@ -29,19 +31,21 @@ section{padding:96px 0}
 .sec-head h2{font-size:clamp(2.1rem,4.2vw,3.2rem);margin:6px 0 14px}
 .sec-head p{color:var(--muted);font-size:1.05rem}
 
-.demo-bar{background:var(--dark);color:#e9d9c6;font-size:.82rem;text-align:center;padding:8px 16px}
-.demo-bar a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px;margin-left:6px}
+.test-bar{background:#e9c46a;color:#2b1d12;font-size:.82rem;text-align:center;padding:7px 16px;font-weight:500}
 
-header{position:sticky;top:0;z-index:40;background:rgba(251,245,236,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:40;background:rgba(251,245,236,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
-.logo{font-family:Fraunces,serif;font-size:1.6rem;font-weight:700;color:var(--dark);line-height:1}
+.logo{display:flex;align-items:center;gap:12px;font-family:Fraunces,serif;font-size:1.45rem;font-weight:700;color:var(--dark);line-height:1}
+.logo img{width:52px;height:52px}
 .logo em{color:var(--terra);font-style:italic;font-weight:500}
-.logo small{display:block;font:700 .62rem "DM Sans",sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olive);margin-top:4px}
-.menu{display:flex;gap:30px;list-style:none;font-weight:500}
+.logo small{display:block;font:700 .6rem "DM Sans",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olive);margin-top:5px}
+.menu{display:flex;gap:28px;list-style:none;font-weight:500}
 .menu a:hover{color:var(--terra)}
+.menu a,.logo span,.btn{white-space:nowrap}
+@media (max-width:1180px){.menu{gap:18px}.nav .btn-sm{display:none}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;font-size:.98rem;transition:background .2s,transform .2s,opacity .2s}
 .btn:hover:not(:disabled){transform:translateY(-2px)}
-.btn-terra{background:var(--terra);color:#fff;box-shadow:0 12px 26px -12px rgba(0,0,0,.28)}
+.btn-terra{background:var(--terra);color:#fff;box-shadow:0 12px 26px -12px rgba(0,0,0,.3)}
 .btn-terra:hover:not(:disabled){background:var(--terra-2)}
 .btn-terra:disabled{opacity:.45;cursor:not-allowed}
 .btn-outline{background:transparent;border:1.5px solid var(--dark);color:var(--dark)}
@@ -50,72 +54,82 @@ header{position:sticky;top:0;z-index:40;background:rgba(251,245,236,.92);backdro
 
 /* Hero */
 .hero{padding:64px 0 90px;overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;top:18px;right:18px;width:150px;height:143px;background:url(img/ornament.png) center/contain no-repeat;opacity:.5;pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
-.hero h1{font-size:clamp(2.8rem,6.4vw,5.2rem);margin:10px 0 22px;letter-spacing:-.02em}
+.hero h1{font-size:clamp(2.7rem,6.2vw,5rem);margin:10px 0 22px;letter-spacing:-.02em}
 .hero h1 em{font-style:italic;color:var(--terra);font-weight:500}
-.lead{font-size:1.14rem;max-width:520px}
+.lead{font-size:1.14rem;max-width:540px}
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin:32px 0 38px}
 .info{display:flex;flex-wrap:wrap;gap:12px;list-style:none}
 .info li{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.9rem;font-weight:500}
-.pizza-wrap{position:relative;aspect-ratio:1;max-width:500px;margin-left:auto;width:100%}
-.board{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#c58b52,#8f5a2e);box-shadow:var(--shadow)}
-.plate{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle,#fff 0 58%,#f1ebe2 59% 63%,#fff 64%);box-shadow:0 14px 30px -10px rgba(43,29,22,.45);display:grid;place-items:center}
-.plate span{font-size:clamp(5rem,15vw,9rem);line-height:1;animation:bob 6s ease-in-out infinite}
-.deco{position:absolute;font-size:2.2rem;animation:bob 5s ease-in-out infinite}
-.d1{top:2%;left:4%}.d2{bottom:6%;left:-2%;animation-delay:-1.5s}.d3{top:10%;right:0;animation-delay:-3s}
-@keyframes bob{50%{transform:translateY(-10px) rotate(8deg)}}
-.plate.ph{background:var(--hero) center/cover no-repeat,#fff;border:10px solid #fff}
-.plate.ph span{display:none}
-.info a{color:inherit;text-decoration:none}
-.tag-hot{position:absolute;bottom:12%;right:2%;background:var(--olive);color:#fff;border-radius:16px;padding:12px 16px;font-size:.85rem;box-shadow:var(--shadow);line-height:1.3}
-.tag-hot b{display:block;font-family:Fraunces,serif;font-size:1.3rem}
+.info a{color:inherit}
+.dish-wrap{position:relative;aspect-ratio:1;max-width:500px;margin-left:auto;width:100%}
+.board{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b9824c,#7d4f28);box-shadow:var(--shadow)}
+.plate{position:absolute;inset:11%;border-radius:50%;overflow:hidden;border:10px solid #fff;box-shadow:0 14px 30px -10px rgba(43,29,18,.5)}
+.plate img{width:100%;height:100%;object-fit:cover}
+.tag-hot{position:absolute;bottom:10%;right:0;background:var(--terra);color:#fff;border-radius:16px;padding:12px 16px;font-size:.85rem;box-shadow:var(--shadow);line-height:1.3}
+.tag-hot b{display:block;font-family:Fraunces,serif;font-size:1.25rem}
 
 /* Menu */
 .menu-sec{background:var(--paper)}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:38px}
-.tab{background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:10px 20px;font-weight:700;font-size:.92rem;color:var(--text);cursor:pointer;transition:.2s}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:34px}
+.tab{background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:700;font-size:.9rem;color:var(--text);cursor:pointer;transition:.2s}
 .tab:hover{border-color:var(--terra);color:var(--terra)}
 .tab[aria-selected="true"]{background:var(--dark);border-color:var(--dark);color:#fff}
-.dishes{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.dish{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;transition:transform .2s,box-shadow .2s;animation:fade .35s ease}
+.dishes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cat-title{grid-column:1/-1;font-size:1.9rem;margin:26px 0 2px;display:flex;align-items:center;gap:14px}
+.cat-title:first-child{margin-top:0}
+.cat-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.cat-note{grid-column:1/-1;color:var(--muted);font-size:.9rem;margin-top:-6px}
+.dish{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;transition:transform .2s,box-shadow .2s;animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}}
 .dish:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.dish-ico{width:64px;height:64px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.9rem;border:1px solid var(--line)}
-.dish h3{font-size:1.2rem;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.dish p{color:var(--muted);font-size:.9rem;margin-top:2px}
-.badge{font:700 .66rem "DM Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.dish-ico{width:64px;height:64px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.7rem;border:1px solid var(--line);overflow:hidden;padding:0}
+.dish-ico img{width:100%;height:100%;object-fit:cover}
+button.dish-ico{cursor:zoom-in}
+.dish h3{font-size:1.12rem;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.dish p{color:var(--muted);font-size:.88rem;margin-top:2px}
+.badge{font:700 .64rem "DM Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
 .badge.wege{background:var(--olive-soft);color:var(--olive)}
-.badge.ostre{background:#f8dfd3;color:var(--terra-2)}
 .dish-side{display:grid;justify-items:end;gap:8px}
-.dish-side b{font-family:Fraunces,serif;font-size:1.25rem;color:var(--dark);white-space:nowrap}
+.dish-side b{font-family:Fraunces,serif;font-size:1.2rem;color:var(--dark);white-space:nowrap}
+.onsite{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
 .add{width:40px;height:40px;border-radius:50%;border:0;background:var(--terra);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;display:grid;place-items:center;transition:transform .2s,background .2s}
 .add:hover{background:var(--terra-2);transform:scale(1.08)}
-.add.added{background:var(--olive)}
+.menu-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:28px}
+
+/* Galeria */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.g-item{position:relative;border:0;padding:0;border-radius:16px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/4;background:var(--paper)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.g-item:hover img{transform:scale(1.05)}
+.g-item span{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(30,18,10,.8));color:#fff;font-weight:700;font-size:.92rem;text-align:left}
+.lightbox{position:fixed;inset:0;z-index:120;background:rgba(20,12,6,.9);display:grid;place-items:center;padding:20px}
+.lightbox[hidden]{display:none}
+.lightbox figure{max-width:min(900px,100%);max-height:100%;display:grid;gap:10px;justify-items:center}
+.lightbox img{max-height:80vh;width:auto;border-radius:14px}
+.lightbox figcaption{color:#fff;font-family:Fraunces,serif;font-size:1.3rem;text-align:center}
+.lb-close{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;font-size:1.5rem;cursor:pointer}
 
 /* O nas */
+.about-sec{background:var(--paper)}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-art{position:relative;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:
-  radial-gradient(circle at 30% 30%,rgba(255,255,255,.18),transparent 40%),
-  linear-gradient(135deg,var(--olive),#3f4826)}
-.about-art::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px)}
-.about-art .quote{position:absolute;inset:auto 28px 28px 28px;color:#fff;font-family:Fraunces,serif;font-style:italic;font-size:1.6rem;line-height:1.3}
-.about-art .big{position:absolute;top:24px;left:28px;font-size:4rem}
-.about-art.ph{background:linear-gradient(180deg,rgba(0,0,0,.08) 30%,rgba(0,0,0,.7)),var(--about) center/cover no-repeat,var(--olive)}
-.about-art.ph::before{display:none}
+.about-art{position:relative;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.05) 35%,rgba(0,0,0,.72)),url(img/o-nas.jpg) center/cover no-repeat,var(--dark)}
+.about-art .quote{position:absolute;inset:auto 28px 28px 28px;color:#fff;font-family:Fraunces,serif;font-style:italic;font-size:1.55rem;line-height:1.3}
 .about p{margin-bottom:14px}
-.stats{display:flex;gap:36px;margin-top:26px}
-.stats b{display:block;font-family:Fraunces,serif;font-size:2.2rem;color:var(--terra);line-height:1.1}
+.stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:26px}
+.stats b{display:block;font-family:Fraunces,serif;font-size:2rem;color:var(--terra);line-height:1.1}
 .stats span{font-size:.9rem;color:var(--muted)}
 
 /* Rezerwacja stolika */
 .reserve-sec{background:var(--dark);color:#e9d9c6}
 .reserve-sec h2{color:#fff}
 .reserve-sec .sec-head p{color:#b9a693}
-.reserve{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:14px;align-items:end;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px}
-.reserve label{display:grid;gap:6px;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#b9a693}
-.reserve input,.reserve select{font-size:1rem;padding:13px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;color-scheme:dark}
+.reserve{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:14px;align-items:end;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px}
+.reserve label{display:grid;gap:6px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#b9a693;min-width:0}
+.reserve input,.reserve select{font-size:1rem;padding:13px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;color-scheme:dark;width:100%;min-width:0}
 .reserve input::placeholder{color:#8f7d6e}
-.reserve input:focus,.reserve select:focus{outline:none;border-color:var(--terra)}
+.reserve input:focus,.reserve select:focus{outline:none;border-color:#e9a07a}
 .reserve select option{color:var(--dark)}
 .reserve-ok{margin-top:18px;padding:16px 20px;border-radius:14px;background:rgba(95,107,58,.35);border:1px solid rgba(231,232,214,.25);color:#fff;font-weight:500}
 .reserve-ok[hidden]{display:none}
@@ -125,16 +139,17 @@ header{position:sticky;top:0;z-index:40;background:rgba(251,245,236,.92);backdro
 .c-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px}
 .c-card h3{font-size:1.5rem;margin-bottom:12px}
 .c-card p,.c-card li{color:var(--muted)}
+.c-card a{color:var(--terra);font-weight:500}
 .c-card ul{list-style:none;display:grid;gap:6px}
 .c-card li{display:flex;justify-content:space-between;gap:12px}
 .c-card li.today{color:var(--terra);font-weight:700}
 .open-now{display:inline-block;margin-top:14px;font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:999px;background:var(--olive-soft);color:var(--olive)}
-.open-now.closed{background:#f8dfd3;color:var(--terra-2)}
+.open-now.closed{background:#f6ddd2;color:var(--terra-2)}
 .map-full{margin-top:22px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--paper)}
 .map-full iframe{display:block;width:100%;height:320px;border:0}
-.menu-note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:24px}
 
-footer{background:var(--dark);color:#9c8a7b;text-align:center;padding:28px 0;font-size:.88rem;border-top:1px solid rgba(255,255,255,.08)}
+footer{background:var(--dark);color:#a5937f;text-align:center;padding:30px 0;font-size:.88rem;border-top:1px solid rgba(255,255,255,.08)}
+footer img{width:64px;height:64px;margin:0 auto 10px;filter:invert(1) sepia(.3);opacity:.8}
 
 /* Koszyk */
 .nav-r{display:flex;align-items:center;gap:12px}
@@ -142,7 +157,7 @@ footer{background:var(--dark);color:#9c8a7b;text-align:center;padding:28px 0;fon
 .hcart:hover{border-color:var(--terra)}
 .hcart b{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--terra);color:#fff;font-size:.75rem;line-height:1;display:grid;place-items:center}
 .hcart b[hidden]{display:none}
-.cart-btn{position:fixed;left:50%;bottom:18px;z-index:60;width:min(520px,100% - 28px);display:flex;align-items:center;gap:14px;background:var(--dark);color:#fff;border:0;border-radius:18px;padding:12px 20px 12px 12px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 18px 40px -14px rgba(43,29,22,.75);transform:translate(-50%,150%);opacity:0;visibility:hidden;transition:transform .35s ease,opacity .35s,visibility .35s}
+.cart-btn{position:fixed;left:50%;bottom:18px;z-index:60;width:min(520px,100% - 28px);display:flex;align-items:center;gap:14px;background:var(--dark);color:#fff;border:0;border-radius:18px;padding:12px 20px 12px 12px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 18px 40px -14px rgba(43,29,18,.75);transform:translate(-50%,150%);opacity:0;visibility:hidden;transition:transform .35s ease,opacity .35s,visibility .35s}
 .cart-btn.show{transform:translate(-50%,0);opacity:1;visibility:visible}
 .cart-btn.show:hover{transform:translate(-50%,-3px)}
 .cart-btn .count{min-width:36px;height:36px;flex:none;border-radius:11px;background:var(--terra);display:grid;place-items:center;font-size:.95rem;padding:0 8px}
@@ -156,9 +171,9 @@ body.has-cart{padding-bottom:92px}
 .step button:hover{background:var(--terra-2)}
 .step span{min-width:20px;text-align:center;color:#fff;font-weight:700}
 .unit{margin-left:auto;color:var(--muted);font-size:.85rem}
-.overlay{position:fixed;inset:0;z-index:70;background:rgba(43,29,22,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay{position:fixed;inset:0;z-index:70;background:rgba(43,29,18,.45);opacity:0;pointer-events:none;transition:opacity .3s}
 .overlay.show{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(420px,100%);background:var(--cream);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .35s ease,visibility .35s;box-shadow:-20px 0 50px -20px rgba(43,29,22,.4)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(420px,100%);background:var(--cream);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .35s ease,visibility .35s;box-shadow:-20px 0 50px -20px rgba(43,29,18,.4)}
 .drawer.show{transform:none;visibility:visible}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
 .drawer-head h3{font-size:1.6rem}
@@ -174,22 +189,17 @@ body.has-cart{padding-bottom:92px}
 .cart-empty{text-align:center;color:var(--muted);padding:50px 10px}
 .cart-empty div{font-size:3rem;margin-bottom:10px}
 .drawer-foot{padding:20px 24px 24px;border-top:1px solid var(--line);background:#fff}
-.mode{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);border-radius:999px;padding:4px;margin-bottom:16px}
-.mode button{border:0;background:transparent;border-radius:999px;padding:10px;font-weight:700;cursor:pointer;color:var(--muted)}
-.mode button[aria-pressed="true"]{background:#fff;color:var(--dark);box-shadow:0 4px 12px -6px rgba(43,29,22,.35)}
-.progress{font-size:.85rem;color:var(--olive);margin-bottom:10px}
-.bar{height:6px;border-radius:3px;background:var(--paper);overflow:hidden;margin-bottom:16px}
-.bar i{display:block;height:100%;background:var(--olive);transition:width .3s}
+.pickup{display:flex;gap:10px;align-items:center;background:var(--paper);border-radius:14px;padding:10px 14px;font-size:.9rem;margin-bottom:14px}
 .rows{display:grid;gap:6px;margin-bottom:16px;font-size:.95rem}
 .rows div{display:flex;justify-content:space-between}
 .rows .grand{font-family:Fraunces,serif;font-size:1.4rem;color:var(--dark);font-weight:600;padding-top:8px;border-top:1px solid var(--line);margin-top:4px}
 .drawer-foot .btn{width:100%}
 
-.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(43,29,22,.55)}
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(43,29,18,.55)}
 .modal[hidden]{display:none}
 .modal-box{background:var(--cream);border-radius:24px;padding:40px 32px;max-width:420px;width:100%;text-align:center;animation:pop .35s ease}
 @keyframes pop{from{transform:scale(.92);opacity:0}}
-.modal-box .emoji{font-size:3.4rem}
+.modal-box img{width:90px;height:90px;margin:0 auto}
 .modal-box h3{font-size:2rem;margin:10px 0}
 .modal-box p{color:var(--muted)}
 .modal-box .num{display:inline-block;margin:18px 0;padding:10px 18px;border-radius:12px;background:#fff;border:1px dashed var(--terra);font-weight:700;color:var(--terra)}
@@ -198,38 +208,45 @@ body.has-cart{padding-bottom:92px}
 @media (max-width:980px){
   .menu{display:none}
   .hero-grid,.about{grid-template-columns:1fr}
-  .pizza-wrap{margin:0 auto;max-width:400px}
+  .dish-wrap{margin:0 auto;max-width:400px}
   .dishes{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(3,1fr)}
   .reserve{grid-template-columns:1fr 1fr}
   .reserve .btn{grid-column:1/-1}
   .contact-grid{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   section{padding:72px 0}
-  .dish{grid-template-columns:48px 1fr auto;gap:12px;padding:14px}
-  .dish-ico{width:48px;height:48px;font-size:1.4rem}
+  .hero::before{width:90px;height:86px;top:8px;right:8px}
+  .logo{font-size:1.2rem;gap:9px}
+  .logo img{width:44px;height:44px}
+  .dish{grid-template-columns:52px 1fr auto;gap:12px;padding:12px}
+  .dish-ico{width:52px;height:52px;font-size:1.4rem}
+  .gallery{grid-template-columns:1fr 1fr;gap:10px}
   .reserve{grid-template-columns:1fr}
   .cart-btn{bottom:12px;padding:10px 16px 10px 10px}
   .nav .btn{display:none}
+  .cat-title{font-size:1.6rem}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<div class="demo-bar">Wersja demonstracyjna strony dla: <b>Karczma Pod Lipami</b> · nie jest to oficjalna strona firmy · zdjęcia, ceny i godziny są przykładowe · autor projektu: Sebastian Jakubiec <a href="https://sebix224.github.io/strony-internetowe/">portfolio</a></div><style>.wm{position:fixed;inset:0;z-index:9999;pointer-events:none;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='460'%20height='300'%3E%3Ctext%20x='230'%20y='150'%20text-anchor='middle'%20transform='rotate(-24%20230%20150)'%20font-family='Arial,sans-serif'%20font-size='22'%20font-weight='700'%20letter-spacing='3'%20fill='%23808080'%20fill-opacity='.16'%3EPROJEKT%20DEMO%20%E2%80%93%20S.%20JAKUBIEC%3C/text%3E%3C/svg%3E")}</style><div class="wm" aria-hidden="true"></div>
+<div class="test-bar">Wersja testowa strony do akceptacji – zamówienia i rezerwacje nie są jeszcze nigdzie wysyłane.</div>
 
 <header>
   <nav class="wrap nav">
-    <a href="#" class="logo">Karczma <em>Pod Lipami</em><small>Stodoła · Ustroń</small></a>
+    <a href="#" class="logo"><img src="img/logo.png" alt="" width="52" height="52"><span>Karczma <em>Pod Lipami</em><small>Ustroń · Szpitalna 5</small></span></a>
     <ul class="menu">
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#o-nas">O nas</a></li>
+      <li><a href="#galeria">Nasze dania</a></li>
+      <li><a href="#o-nas">Przyjęcia</a></li>
       <li><a href="#stolik">Rezerwacja</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
     <div class="nav-r">
-      <a href="#menu" class="btn btn-terra btn-sm">Zamów online</a>
+      <a href="#menu" class="btn btn-terra btn-sm">Zamów na wynos</a>
       <button class="hcart" id="hcart" type="button" aria-label="Koszyk">🛒<b id="hcart-count" hidden>0</b></button>
     </div>
   </nav>
@@ -241,18 +258,17 @@ body.has-cart{padding-bottom:92px}
     <div>
       <p class="kicker">Witajcie w karczmie!</p>
       <h1>Swojskie jedzenie <em>pod lipami</em></h1>
-      <p class="lead">Karczma Pod Lipami na ustrońskim Zawodziu – domowa kuchnia polska i regionalna, porcje, po których wychodzi się najedzonym, i piwo z kija. Sprawdź menu, zarezerwuj stolik albo zapytaj o termin przyjęcia.</p>
+      <p class="lead">Karczma Pod Lipami w Ustroniu – domowa kuchnia polska i regionalna: golonko pieczone, rolada wołowa z kluskami śląskimi, pstrąg z grilla, pierogi rzemieślnicze i piwo z beczki. Sprawdź menu, zamów na wynos albo zarezerwuj stolik.</p>
       <div class="cta">
-        <a href="#menu" class="btn btn-terra">Zamów online</a>
+        <a href="#menu" class="btn btn-terra">Zobacz menu</a>
         <a href="#stolik" class="btn btn-outline">Zarezerwuj stolik</a>
       </div>
       <ul class="info"><li>⭐ 4,4 w Google (379 opinii)</li><li>🎉 Przyjęcia i imprezy</li><li><a href="tel:+48787081383">📞 787 081 383</a></li></ul>
     </div>
-    <div class="pizza-wrap" aria-hidden="true">
-      <div class="board"></div>
-      <div class="plate ph" style="--hero:url('https://images.unsplash.com/photo-1785735364389-43f26185f2cd?auto=format&fit=crop&w=700&h=700&q=70')"><span>🍖</span></div>
-      <span class="deco d1">🌳</span><span class="deco d2">🥨</span><span class="deco d3">🧀</span>
-      <div class="tag-hot"><b>Przyjęcia</b>zapytaj o wolny termin</div>
+    <div class="dish-wrap">
+      <div class="board" aria-hidden="true"></div>
+      <div class="plate"><img src="img/hero.jpg" alt="Golonko pieczone na kapuście zasmażanej z pieczonymi ziemniakami" width="640" height="640"></div>
+      <div class="tag-hot"><b>Golonko pieczone</b>na kapuście zasmażanej · 75 zł</div>
     </div>
   </div>
 </section>
@@ -262,24 +278,36 @@ body.has-cart{padding-bottom:92px}
     <div class="sec-head center">
       <p class="kicker">Menu</p>
       <h2>Karta dań</h2>
-      <p>Domowa kuchnia polska i regionalna, duże porcje i trzy rodzaje surówek do wyboru. Dodaj dania do koszyka i wybierz odbiór albo dowóz.</p>
+      <p>Domowa kuchnia polska i regionalna. Dodaj dania do koszyka i odbierz zamówienie na wynos – albo przyjdź do nas na miejscu.</p>
     </div>
     <div class="tabs" role="tablist" id="tabs"></div>
     <div class="dishes" id="dishes"></div>
-    <p class="menu-note">Dania i ceny w projekcie są przykładowe – w gotowej stronie wpiszemy Państwa menu.</p>
+    <p class="menu-note">Kliknij zdjęcie dania, żeby je powiększyć. Piwa podajemy tylko na miejscu.</p>
   </div>
 </section>
 
-<section id="o-nas">
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Z naszej kuchni</p>
+      <h2>Nasze dania</h2>
+      <p>Tak wyglądają talerze, które wychodzą z naszej kuchni.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<section id="o-nas" class="about-sec">
   <div class="wrap about">
-    <div class="about-art ph" aria-hidden="true" style="--about:url('https://images.unsplash.com/photo-1784572931802-1caec438f6c9?auto=format&fit=crop&w=900&q=70')">
-      <span class="big">🌳</span>
+    <div class="about-art" role="img" aria-label="Pieczone mięso prosto z naszej kuchni">
       <p class="quote">„Dobre jedzenie smakuje najlepiej w dobrym towarzystwie.”</p>
     </div>
     <div>
-      <p class="kicker">O nas</p>
+      <p class="kicker">Przyjęcia</p>
       <h2 style="font-size:clamp(2.1rem,4.2vw,3.2rem);margin:6px 0 18px">Przyjęcia w Stodole Pod Lipami</h2>
-      <p>Przyjęcia rodzinne, komunie, chrzciny, urodziny i spotkania firmowe – menu dopasujemy do okazji i liczby gości.</p><p>Zadzwoń albo napisz – podpowiemy, jak zorganizować Twoje przyjęcie.</p><div class="stats"><div><b>Imprezy</b><span>rodzinne i firmowe</span></div><div><b>Piwo z kija</b><span>lokalne i czeskie</span></div></div>
+      <p>Przyjęcia rodzinne, komunie, chrzciny, urodziny i spotkania firmowe – menu dopasujemy do okazji i liczby gości.</p>
+      <p>Zadzwoń albo napisz – podpowiemy, jak zorganizować Twoje przyjęcie.</p>
+      <div class="stats"><div><b>Przyjęcia</b><span>rodzinne i firmowe</span></div><div><b>Piwo z beczki</b><span>Kozel i Pilsner</span></div></div>
     </div>
   </div>
 </section>
@@ -289,13 +317,14 @@ body.has-cart{padding-bottom:92px}
     <div class="sec-head">
       <p class="kicker">Rezerwacja</p>
       <h2>Zarezerwuj stolik</h2>
-      <p>Wybierz dzień, godzinę i liczbę osób. Większe przyjęcia ustalimy telefonicznie.</p>
+      <p>Wybierz dzień, godzinę i liczbę osób – potwierdzimy rezerwację telefonicznie. Większe przyjęcia najlepiej ustalić przez telefon: 787 081 383.</p>
     </div>
     <form class="reserve" id="reserve">
       <label>Data<input type="date" id="r-date" required></label>
       <label>Godzina<select id="r-time"></select></label>
       <label>Liczba osób<select id="r-people"></select></label>
       <label>Imię<input id="r-name" placeholder="Twoje imię" required autocomplete="given-name"></label>
+      <label>Telefon<input id="r-phone" type="tel" placeholder="np. 600 000 000" required autocomplete="tel"></label>
       <button class="btn btn-terra" type="submit">Rezerwuję</button>
     </form>
     <p class="reserve-ok" id="reserve-ok" hidden></p>
@@ -311,26 +340,29 @@ body.has-cart{padding-bottom:92px}
     <div class="contact-grid">
       <div class="c-card">
         <h3>Adres</h3>
-        <p>ul. Szpitalna 5<br>43-450 Ustroń</p>
-        <p style="margin-top:12px">Tel. <a href="tel:+48787081383">787 081 383</a><br>E-mail: <a href="mailto:stodolapodlipami@gmail.com">stodolapodlipami@gmail.com</a><br>Facebook: Karczma Pod Lipami</p>
+        <p>Karczma Pod Lipami<br>ul. Szpitalna 5<br>43-450 Ustroń</p>
+        <p style="margin-top:12px">Tel. <a href="tel:+48787081383">787 081 383</a><br>E-mail: <a href="mailto:stodolapodlipami@gmail.com">stodolapodlipami@gmail.com</a><br><a href="https://www.facebook.com/profile.php?id=61580206990534" target="_blank" rel="noopener">Facebook: Karczma Pod Lipami</a></p>
       </div>
       <div class="c-card">
         <h3>Godziny otwarcia</h3>
         <ul id="hours"></ul>
         <span class="open-now" id="open-now"></span>
-        <p style="margin-top:10px;font-size:.85rem">Godziny przykładowe – uzupełnimy je.</p>
       </div>
       <div class="c-card">
         <h3>Przyjęcia</h3>
         <p>Planujesz komunię, urodziny albo spotkanie firmowe? Zadzwoń: <a href="tel:+48787081383">787 081 383</a> – ustalimy menu i termin.</p>
       </div>
     </div>
-    <div class="map-full"><iframe title="Mapa dojazdu: Karczma Pod Lipami" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Karczma%20Pod%20Lipami%2C%20ul.%20Szpitalna%205%2C%20Ustro%C5%84&amp;output=embed"></iframe></div>
+    <div class="map-full"><iframe title="Mapa dojazdu: Karczma Pod Lipami, ul. Szpitalna 5, Ustroń" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Karczma%20Pod%20Lipami%2C%20ul.%20Szpitalna%205%2C%20Ustro%C5%84&amp;output=embed"></iframe></div>
   </div>
 </section>
 </main>
 
-<footer>© 2026 Karczma Pod Lipami · projekt demonstracyjny strony, nie jest to oficjalna strona firmy<br>Projekt graficzny i kod: © 2026 Sebastian Jakubiec – wszelkie prawa zastrzeżone. Kopiowanie i wykorzystanie bez zgody autora jest zabronione.</footer>
+<footer>
+  <img src="img/logo.png" alt="" width="64" height="64">
+  © 2026 Karczma Pod Lipami · ul. Szpitalna 5, 43-450 Ustroń · tel. 787 081 383<br>
+  Strona: Sebastian Jakubiec
+</footer>
 
 <button class="cart-btn" id="cart-btn" type="button"><span class="count" id="cart-count">0</span><span class="lbl" id="cart-lbl" aria-live="polite">Zobacz zamówienie</span><span class="tot" id="cart-total">0 zł</span></button>
 <div class="overlay" id="overlay"></div>
@@ -338,15 +370,8 @@ body.has-cart{padding-bottom:92px}
   <div class="drawer-head"><h3>Twoje zamówienie</h3><button class="x" id="close-cart" aria-label="Zamknij koszyk">×</button></div>
   <div class="drawer-body" id="cart-lines"></div>
   <div class="drawer-foot" id="cart-foot">
-    <div class="mode" id="mode">
-      <button type="button" data-mode="dostawa" aria-pressed="true">🛵 Dostawa</button>
-      <button type="button" data-mode="odbior" aria-pressed="false">🏃 Odbiór</button>
-    </div>
-    <p class="progress" id="progress"></p>
-    <div class="bar" id="bar"><i id="bar-fill"></i></div>
+    <p class="pickup">🏃 <span>Na wynos – odbiór osobisty w karczmie, ul. Szpitalna 5.</span></p>
     <div class="rows">
-      <div><span>Produkty</span><span id="sub">0 zł</span></div>
-      <div><span>Dostawa</span><span id="fee">0 zł</span></div>
       <div class="grand"><span>Razem</span><span id="grand">0 zł</span></div>
     </div>
     <button class="btn btn-terra" id="order" disabled>Złóż zamówienie</button>
@@ -355,37 +380,120 @@ body.has-cart{padding-bottom:92px}
 
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
   <div class="modal-box">
-    <div class="emoji">🍖</div>
-    <h3 id="m-title">Dziękujemy! Zamówienie przyjęte</h3>
+    <img src="img/logo.png" alt="" width="90" height="90">
+    <h3 id="m-title">Dziękujemy!</h3>
     <p id="m-text"></p>
     <div class="num" id="m-num"></div>
-    <small>To wersja demonstracyjna – zamówienie nie zostało nigdzie wysłane.</small>
-    <button class="btn btn-terra" id="m-close">Super, dziękuję</button>
+    <small>Wersja testowa – zamówienie nie zostało jeszcze nigdzie wysłane.</small>
+    <button class="btn btn-terra" id="m-close">Zamknij</button>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+  <button class="lb-close" id="lb-close" aria-label="Zamknij">×</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
 </div>
 
 <script>
 (() => {
-  const MENU = [{"id":1,"cat":"przystawki","name":"Oscypek z grilla","desc":"Z żurawiną","price":19,"tags":["wege"],"ico":"🧀"},{"id":2,"cat":"przystawki","name":"Krążki cebulowe","desc":"Chrupiące, z sosem czosnkowym","price":16,"tags":["wege"],"ico":"🧅"},{"id":3,"cat":"zupy","name":"Zupa dnia","desc":"Domowa, codziennie inna","price":14,"tags":[],"ico":"🥣"},{"id":4,"cat":"zupy","name":"Żurek","desc":"Z jajkiem i kiełbasą","price":19,"tags":[],"ico":"🍲"},{"id":5,"cat":"dania","name":"Żeberka pieczone","desc":"Mięciutkie, z ziemniakami i surówką do wyboru","price":45,"tags":[],"ico":"🍖"},{"id":6,"cat":"dania","name":"Rolada wołowa","desc":"W sosie pieczeniowym, z kluskami śląskimi i modrą kapustą","price":46,"tags":[],"ico":"🥩"},{"id":7,"cat":"dania","name":"Filet z kurczaka z oscypkiem","desc":"Grillowany, z frytkami i surówką do wyboru","price":38,"tags":[],"ico":"🍗"},{"id":8,"cat":"dania","name":"Pstrąg z grilla","desc":"Z chrupiącą skórką, ziemniakami i surówką","price":46,"tags":[],"ico":"🐟"},{"id":12,"cat":"dania","name":"Naleśniki z pieczarkami","desc":"W sosie śmietanowym","price":29,"tags":["wege"],"ico":"🥞"},{"id":9,"cat":"desery","name":"Szarlotka na ciepło","desc":"Z lodami waniliowymi","price":18,"tags":["wege"],"ico":"🥧"},{"id":10,"cat":"napoje","name":"Kompot z suszu 0,5 l","desc":"Domowy","price":9,"tags":[],"ico":"🧃"},{"id":11,"cat":"napoje","name":"Herbata z sokiem malinowym","desc":"Dzbanek 0,5 l","price":12,"tags":[],"ico":"☕"}];
-  const CATS = [["wszystko","Wszystko"],["przystawki","Przystawki"],["zupy","Zupy"],["dania","Dania główne"],["desery","Desery"],["napoje","Napoje"]];
-  const FREE_FROM = 120, FEE = 10, STORE = 'karczma-pod-lipami-koszyk';
+  // Menu z karty Karczmy (PDF otrzymany 22.11.2026). img = numer zdjęcia w img/dania i img/min.
+  const CATS = [["wszystko","Wszystko"],["zakaski","Zakąski"],["zupy","Zupy"],["ryby","Dania rybne"],["miesne","Dania mięsne"],["pierogi","Pierogi"],["wege","Wegetariańskie"],["dzieci","Dla dzieci"],["dodatki","Dodatki"],["desery","Desery"],["napoje","Napoje"],["piwa","Piwa"]];
+  const NOTES = {pierogi:"Pierogi rzemieślnicze – porcja 8 sztuk.", piwa:"Butelkowe 0,5 l, beczkowe 0,3 l i 0,5 l. Piwa podajemy tylko na miejscu."};
+  const MENU = [
+    {id:1,cat:"zakaski",name:"Sałatka z grillowanym kurczakiem",desc:"Podawana z bagietką czosnkową; sałata lodowa, pomidorki koktajlowe, ogórek zielony, czerwona cebula, kukurydza, grillowany kurczak, sos winegret",price:35,ico:"🥗"},
+    {id:2,cat:"zakaski",name:"Grillowany oscypek (3 szt.)",desc:"Mix sałat, żurawina",price:24,ico:"🧀",img:"12"},
+    {id:3,cat:"zakaski",name:"Krążki cebulowe (10 szt.)",desc:"Podawane z sosem czosnkowym",price:20,ico:"🧅"},
+    {id:4,cat:"zakaski",name:"Smalec z cebulką i skwarkami",desc:"Pieczywo, smalec z wyrobu własnego, ogórek kiszony, cebula",price:18,ico:"🍞"},
+    {id:5,cat:"zakaski",name:"Ziemniaki z gzikiem",desc:"150 g",price:15,ico:"🥔"},
+    {id:6,cat:"zupy",name:"Rosół domowy z makaronem",desc:"350 ml",price:17,ico:"🍲"},
+    {id:7,cat:"zupy",name:"Żurek z jajkiem i białą kiełbasą",desc:"350 ml, podawany z pieczywem",price:22,ico:"🥣"},
+    {id:8,cat:"zupy",name:"Kwaśnica na wędzonym żeberku",desc:"350 ml, podawana z pieczywem",price:20,ico:"🥣"},
+    {id:9,cat:"ryby",name:"Pstrąg z grilla",desc:"350–400 g; frytki, masło czosnkowe, zestaw surówek",price:55,ico:"🐟",img:"01"},
+    {id:10,cat:"ryby",name:"Sandacz z pieca",desc:"150–200 g; pieczony ziemniak z masłem czosnkowym i zieloną pietruszką, szpinak na maśle",price:65,ico:"🐟",img:"02"},
+    {id:11,cat:"miesne",name:"Kotlet schabowy",desc:"200 g; ziemniaki opiekane, zestaw surówek",price:45,ico:"🍖",img:"11"},
+    {id:12,cat:"miesne",name:"Pieczeń wieprzowa",desc:"250–300 g; kluski śląskie, zestaw surówek",price:45,ico:"🍖",img:"08"},
+    {id:13,cat:"miesne",name:"Placki z gulaszem (3 szt.)",desc:"Placki ziemniaczane, gulasz wieprzowy, ogórek kiszony",price:45,ico:"🥘",img:"07"},
+    {id:14,cat:"miesne",name:"Żeberko na kapuście zasmażanej",desc:"250 g; ziemniaczki opiekane",price:43,ico:"🍖"},
+    {id:15,cat:"miesne",name:"Golonko pieczone",desc:"600–800 g; podawane na kapuście zasmażanej z pieczonym ziemniakiem",price:75,ico:"🍖",img:"13"},
+    {id:16,cat:"miesne",name:"Rolada wołowa w sosie pieczeniowym",desc:"200 g; kluski śląskie, czerwona kapusta",price:50,ico:"🥩",img:"04"},
+    {id:17,cat:"miesne",name:"Udziec jagnięcy",desc:"150–200 g; pieczony ziemniak nadziewany boczkiem z cebulą, kapusta zasmażana",price:87,ico:"🍖",img:"06"},
+    {id:18,cat:"miesne",name:"Filet z kurczaka w chrupiącej panierce",desc:"200 g; frytki, zestaw surówek, sos czosnkowy",price:40,ico:"🍗"},
+    {id:19,cat:"miesne",name:"Grillowany filet z kurczaka z oscypkiem",desc:"200 g; frytki, zestaw surówek, żurawina",price:42,ico:"🍗"},
+    {id:20,cat:"miesne",name:"Filet z indyka w sosie pieczarkowym",desc:"200 g; kluski śląskie, zestaw surówek",price:40,ico:"🍗",img:"03"},
+    {id:21,cat:"pierogi",name:"Pierogi z mięsem",desc:"8 szt.",price:36,ico:"🥟"},
+    {id:22,cat:"pierogi",name:"Pierogi z kapustą i grzybami",desc:"8 szt.",price:33,ico:"🥟"},
+    {id:23,cat:"pierogi",name:"Pierogi z truskawkami",desc:"8 szt.",price:33,ico:"🥟"},
+    {id:24,cat:"pierogi",name:"Pierogi ukraińskie",desc:"8 szt.",price:33,ico:"🥟"},
+    {id:25,cat:"pierogi",name:"Pierogi ze szpinakiem",desc:"8 szt.",price:33,ico:"🥟"},
+    {id:26,cat:"wege",name:"Placki ziemniaczane ze śmietaną (4 szt.)",desc:"",price:25,ico:"🥔"},
+    {id:27,cat:"wege",name:"Placki ziemniaczane z sosem pieczarkowym (4 szt.)",desc:"",price:30,ico:"🥔"},
+    {id:28,cat:"wege",name:"Kluski śląskie z sosem pieczarkowym (10 szt.)",desc:"",price:18,ico:"🍄"},
+    {id:29,cat:"wege",name:"Naleśniki nadziewane pieczarkami (2 szt.)",desc:"Zapiekane z żółtym serem i ketchupem",price:35,ico:"🥞"},
+    {id:30,cat:"wege",name:"Ser panierowany",desc:"200 g; frytki, zestaw surówek, sos czosnkowy",price:40,ico:"🧀"},
+    {id:31,cat:"dzieci",name:"Pierogi z truskawkami (6 szt.)",desc:"",price:23,ico:"🥟"},
+    {id:32,cat:"dzieci",name:"Nuggetsy z frytkami (6 szt.)",desc:"",price:24,ico:"🍗"},
+    {id:33,cat:"dzieci",name:"Stripsy z frytkami (2 szt.)",desc:"",price:24,ico:"🍗"},
+    {id:34,cat:"dzieci",name:"Naleśniki z serem (2 szt.)",desc:"",price:26,ico:"🥞"},
+    {id:35,cat:"dodatki",name:"Kluski śląskie z sosem (10 szt.)",desc:"",price:18,ico:"🍽️"},
+    {id:36,cat:"dodatki",name:"Frytki",desc:"150 g",price:12,ico:"🍟"},
+    {id:37,cat:"dodatki",name:"Ziemniaki opiekane",desc:"150 g",price:12,ico:"🥔"},
+    {id:38,cat:"dodatki",name:"Zestaw surówek / kapusta zasmażana",desc:"150 g",price:10,ico:"🥗"},
+    {id:39,cat:"dodatki",name:"Bukiet gotowanych warzyw",desc:"150 g",price:12,ico:"🥦"},
+    {id:40,cat:"dodatki",name:"Sos: ketchup, majonez, musztarda lub czosnkowy",desc:"",price:5,ico:"🥫"},
+    {id:41,cat:"desery",name:"Szarlotka na ciepło",desc:"150 g; 2 gałki lodów, bita śmietana",price:25,ico:"🥧"},
+    {id:42,cat:"desery",name:"Torcik miodowy",desc:"120 g",price:15,ico:"🍰"},
+    {id:43,cat:"desery",name:"Pucharek lodowy z owocami",desc:"3 gałki lodów, owoce, bita śmietana, polewa",price:24,ico:"🍨"},
+    {id:44,cat:"desery",name:"Pucharek lodowy z advocatem",desc:"3 gałki lodów, advocat, bita śmietana",price:24,ico:"🍨"},
+    {id:45,cat:"desery",name:"Kawa mrożona z lodami",desc:"2 gałki lodów, bita śmietana",price:24,ico:"🥤"},
+    {id:46,cat:"napoje",name:"Kawa parzona",desc:"200 ml",price:10,ico:"☕"},
+    {id:47,cat:"napoje",name:"Kawa czarna z ekspresu",desc:"200 ml",price:10,ico:"☕"},
+    {id:48,cat:"napoje",name:"Kawa biała z ekspresu",desc:"200 ml",price:12,ico:"☕"},
+    {id:49,cat:"napoje",name:"Espresso",desc:"40 ml",price:9,ico:"☕"},
+    {id:50,cat:"napoje",name:"Cappuccino",desc:"200 ml",price:15,ico:"☕"},
+    {id:51,cat:"napoje",name:"Latte",desc:"200 ml",price:17,ico:"☕"},
+    {id:52,cat:"napoje",name:"Herbata Richmont",desc:"450 ml",price:13,ico:"🍵"},
+    {id:53,cat:"napoje",name:"Coca-Cola, Fanta, Sprite",desc:"250 ml",price:9,ico:"🥤"},
+    {id:54,cat:"napoje",name:"Kinley tonic",desc:"250 ml",price:9,ico:"🥤"},
+    {id:55,cat:"napoje",name:"Woda „Kropla Beskidu”",desc:"300 ml",price:8,ico:"💧"},
+    {id:56,cat:"napoje",name:"Sok Cappy",desc:"300 ml",price:9,ico:"🧃"},
+    {id:57,cat:"napoje",name:"Kofola",desc:"500 ml",price:12,ico:"🥤"},
+    {id:58,cat:"piwa",name:"Tyskie",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:59,cat:"piwa",name:"Kozel jasny",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:60,cat:"piwa",name:"Żywiec",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:61,cat:"piwa",name:"Żubr",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:62,cat:"piwa",name:"Cieszyn Porter",desc:"butelka 0,5 l",price:18,ico:"🍺",onsite:true},
+    {id:63,cat:"piwa",name:"Cieszyn Pilsner",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:64,cat:"piwa",name:"Cieszyn Lager",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:65,cat:"piwa",name:"Cieszyn Pszeniczne",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:66,cat:"piwa",name:"Piwo z Księstwa Cieszyńskiego",desc:"butelka 0,5 l",price:18,ico:"🍺",onsite:true},
+    {id:67,cat:"piwa",name:"Piwo czeskie",desc:"butelka 0,5 l",price:12,ico:"🍺",onsite:true},
+    {id:68,cat:"piwa",name:"Kozel Jasny z beczki",desc:"0,3 l · 10 zł / 0,5 l · 12 zł",price:10,priceText:"od 10 zł",ico:"🍺",onsite:true},
+    {id:69,cat:"piwa",name:"Kozel Ciemny z beczki",desc:"0,3 l · 10 zł / 0,5 l · 12 zł",price:10,priceText:"od 10 zł",ico:"🍺",onsite:true},
+    {id:70,cat:"piwa",name:"Pilsner z beczki",desc:"0,3 l · 12 zł / 0,5 l · 15 zł",price:12,priceText:"od 12 zł",ico:"🍺",onsite:true},
+    {id:71,cat:"piwa",name:"Sok do piwa",desc:"",price:2,ico:"🍓",onsite:true},
+    {id:72,cat:"piwa",name:"Piwo Free 0%",desc:"0,5 l, różne smaki",price:12,ico:"🍺"},
+    {id:73,cat:"piwa",name:"Karmi Classic 0%",desc:"0,5 l",price:12,ico:"🍺"}
+  ];
+  const GALLERY = [["13","Golonko pieczone"],["04","Rolada wołowa z kluskami śląskimi"],["01","Pstrąg z grilla"],["06","Udziec jagnięcy"],["11","Kotlet schabowy"],["08","Pieczeń wieprzowa"],["02","Sandacz z pieca"],["07","Placki z gulaszem"],["03","Filet z indyka w sosie pieczarkowym"],["12","Grillowany oscypek i przystawki"],["05","Deser"],["09","Rolada wołowa"]];
+  const STORE = 'karczma-pod-lipami-koszyk';
   const RANGES = {"0":[10,21],"1":[12,21],"2":[12,21],"3":[12,21],"4":[12,21],"5":[12,21],"6":[10,21]};
   const DAY_NAMES = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
   document.getElementById('hours').innerHTML = [1, 2, 3, 4, 5, 6, 0].map(d =>
     `<li data-d="${d}"><span>${DAY_NAMES[d]}</span><span>${RANGES[d] ? `${RANGES[d][0]}:00–${RANGES[d][1]}:00` : 'nieczynne'}</span></li>`).join('');
   const $ = id => document.getElementById(id);
   const zl = n => `${n.toFixed(2).replace('.', ',').replace(',00', '')} zł`;
+  const byId = id => MENU.find(m => m.id == id);
 
   let cat = 'wszystko';
   let cart = {};
-  let mode = 'dostawa';
   try { cart = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { cart = {}; }
+  Object.keys(cart).forEach(id => { const d = byId(id); if (!d || d.onsite) delete cart[id]; });
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(cart)); } catch (e) {} };
 
   // Zakładki kategorii
   CATS.forEach(([id, label]) => {
     const b = document.createElement('button');
-    b.className = 'tab'; b.type = 'button'; b.role = 'tab'; b.textContent = label;
+    b.className = 'tab'; b.type = 'button'; b.setAttribute('role', 'tab'); b.textContent = label;
     b.setAttribute('aria-selected', id === cat);
     b.addEventListener('click', () => {
       cat = id;
@@ -395,20 +503,27 @@ body.has-cart{padding-bottom:92px}
     $('tabs').appendChild(b);
   });
 
-  function renderMenu() {
-    const list = MENU.filter(d => cat === 'wszystko' || d.cat === cat);
-    $('dishes').innerHTML = list.map(d => `
+  const dishHtml = d => `
       <article class="dish">
-        <div class="dish-ico" aria-hidden="true">${d.ico}</div>
+        ${d.img
+          ? `<button type="button" class="dish-ico" data-zoom="${d.img}" data-cap="${d.name}" aria-label="Powiększ zdjęcie: ${d.name}"><img src="img/min/${d.img}.jpg" alt="" width="64" height="64" loading="lazy"></button>`
+          : `<div class="dish-ico" aria-hidden="true">${d.ico}</div>`}
         <div>
-          <h3>${d.name}${d.tags.map(t => `<span class="badge ${t}">${t}</span>`).join('')}</h3>
-          <p>${d.desc}</p>
+          <h3>${d.name}${(d.tags || []).map(t => `<span class="badge ${t}">${t}</span>`).join('')}</h3>
+          ${d.desc ? `<p>${d.desc}</p>` : ''}
         </div>
         <div class="dish-side">
-          <b>${zl(d.price)}</b>
-          <div data-ctl="${d.id}">${ctl(d)}</div>
+          <b>${d.priceText || zl(d.price)}</b>
+          ${d.onsite ? '<span class="onsite">na miejscu</span>' : `<div data-ctl="${d.id}">${ctl(d)}</div>`}
         </div>
-      </article>`).join('');
+      </article>`;
+
+  function renderMenu() {
+    const cats = cat === 'wszystko' ? CATS.slice(1) : CATS.filter(c => c[0] === cat);
+    $('dishes').innerHTML = cats.map(([id, label]) => {
+      const list = MENU.filter(d => d.cat === id);
+      return `<h3 class="cat-title">${label}</h3>${NOTES[id] ? `<p class="cat-note">${NOTES[id]}</p>` : ''}${list.map(dishHtml).join('')}`;
+    }).join('');
   }
 
   // Przycisk „+” albo licznik „− 2 +” przy daniu
@@ -418,7 +533,7 @@ body.has-cart{padding-bottom:92px}
       : `<button class="add" type="button" data-inc="${d.id}" aria-label="Dodaj ${d.name} do koszyka">+</button>`;
   }
   function syncDishes() {
-    document.querySelectorAll('[data-ctl]').forEach(el => { el.innerHTML = ctl(MENU.find(m => m.id == el.dataset.ctl)); });
+    document.querySelectorAll('[data-ctl]').forEach(el => { el.innerHTML = ctl(byId(el.dataset.ctl)); });
   }
 
   let flashT;
@@ -427,7 +542,7 @@ body.has-cart{padding-bottom:92px}
     if (cart[id] <= 0) delete cart[id];
     save(); renderCart();
     if (delta > 0) {
-      $('cart-lbl').textContent = `✓ Dodano: ${MENU.find(m => m.id == id).name}`;
+      $('cart-lbl').textContent = `✓ Dodano: ${byId(id).name}`;
       const cb = $('cart-btn'); cb.classList.remove('bump'); void cb.offsetWidth; cb.classList.add('bump');
       clearTimeout(flashT);
       flashT = setTimeout(() => { $('cart-lbl').textContent = 'Zobacz zamówienie'; }, 1800);
@@ -435,6 +550,8 @@ body.has-cart{padding-bottom:92px}
   }
 
   $('dishes').addEventListener('click', e => {
+    const z = e.target.closest('[data-zoom]');
+    if (z) { openLb(z.dataset.zoom, z.dataset.cap); return; }
     const b = e.target.closest('[data-inc],[data-dec]');
     if (!b) return;
     const kind = b.dataset.inc ? 'inc' : 'dec', id = b.dataset[kind];
@@ -445,13 +562,12 @@ body.has-cart{padding-bottom:92px}
   });
 
   function totals() {
-    const sub = Object.entries(cart).reduce((s, [id, q]) => s + MENU.find(m => m.id == id).price * q, 0);
-    const fee = mode === 'dostawa' && sub > 0 && sub < FREE_FROM ? FEE : 0;
-    return { sub, fee, grand: sub + fee, count: Object.values(cart).reduce((a, b) => a + b, 0) };
+    const sub = Object.entries(cart).reduce((s, [id, q]) => s + byId(id).price * q, 0);
+    return { sub, count: Object.values(cart).reduce((a, b) => a + b, 0) };
   }
 
   function renderCart() {
-    const { sub, fee, grand, count } = totals();
+    const { sub, count } = totals();
     $('cart-count').textContent = count;
     $('cart-total').textContent = zl(sub);
     $('cart-btn').classList.toggle('show', count > 0);
@@ -462,18 +578,11 @@ body.has-cart{padding-bottom:92px}
     syncDishes();
     const ids = Object.keys(cart);
     $('cart-lines').innerHTML = ids.length ? ids.map(id => {
-      const d = MENU.find(m => m.id == id);
+      const d = byId(id);
       return `<div class="line"><b>${d.name}</b><span class="sum">${zl(d.price * cart[id])}</span>
         <div class="qty"><button type="button" data-dec="${id}" aria-label="Mniej">−</button><span>${cart[id]}</span><button type="button" data-inc="${id}" aria-label="Więcej">+</button><span class="unit">${zl(d.price)} / szt.</span></div></div>`;
     }).join('') : '<div class="cart-empty"><div>🧺</div>Koszyk jest pusty.<br>Dodaj coś pysznego z menu!</div>';
-    $('sub').textContent = zl(sub);
-    $('fee').textContent = mode === 'odbior' ? '—' : (fee ? zl(fee) : 'gratis');
-    $('grand').textContent = zl(grand);
-    const showBar = mode === 'dostawa' && sub > 0;
-    $('bar').style.display = showBar ? '' : 'none';
-    $('progress').style.display = showBar ? '' : 'none';
-    $('bar-fill').style.width = `${Math.min(100, sub / FREE_FROM * 100)}%`;
-    $('progress').textContent = sub >= FREE_FROM ? '🎉 Masz darmową dostawę!' : `Brakuje ${zl(FREE_FROM - sub)} do darmowej dostawy`;
+    $('grand').textContent = zl(sub);
     $('order').disabled = count === 0;
   }
 
@@ -481,13 +590,6 @@ body.has-cart{padding-bottom:92px}
     const inc = e.target.dataset.inc, dec = e.target.dataset.dec;
     if (inc) change(inc, 1);
     if (dec) change(dec, -1);
-  });
-
-  $('mode').addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    mode = b.dataset.mode;
-    $('mode').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    renderCart();
   });
 
   const openCart = () => { $('drawer').classList.add('show'); $('overlay').classList.add('show'); $('drawer').setAttribute('aria-hidden', 'false'); };
@@ -498,18 +600,30 @@ body.has-cart{padding-bottom:92px}
   $('overlay').addEventListener('click', closeCart);
 
   $('order').addEventListener('click', () => {
-    const { grand } = totals();
-    const num = 'R-' + Math.floor(1000 + Math.random() * 9000);
+    const { sub } = totals();
+    const num = 'KPL-' + Math.floor(1000 + Math.random() * 9000);
     $('m-num').textContent = `Numer zamówienia: ${num}`;
-    $('m-text').textContent = mode === 'dostawa'
-      ? `Do zapłaty ${zl(grand)}. Dostawa za ok. 40–50 minut.`
-      : `Do zapłaty ${zl(grand)}. Zamówienie będzie gotowe do odbioru za ok. 20 minut.`;
+    $('m-text').textContent = `Do zapłaty przy odbiorze: ${zl(sub)}. Zadzwonimy, gdy zamówienie będzie gotowe.`;
     cart = {}; save(); renderCart(); closeCart();
     $('modal').hidden = false;
     $('m-close').focus();
   });
   $('m-close').addEventListener('click', () => { $('modal').hidden = true; });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); $('modal').hidden = true; } });
+
+  // Galeria i powiększanie zdjęć
+  $('gallery').innerHTML = GALLERY.map(([n, cap]) =>
+    `<button type="button" class="g-item" data-zoom="${n}" data-cap="${cap}"><img src="img/dania/${n}.jpg" alt="${cap}" loading="lazy" width="675" height="900"><span>${cap}</span></button>`).join('');
+  $('gallery').addEventListener('click', e => { const z = e.target.closest('[data-zoom]'); if (z) openLb(z.dataset.zoom, z.dataset.cap); });
+  let lastFocus;
+  function openLb(n, cap) {
+    lastFocus = document.activeElement;
+    $('lb-img').src = `img/dania/${n}.jpg`; $('lb-img').alt = cap; $('lb-cap').textContent = cap;
+    $('lightbox').hidden = false; $('lb-close').focus();
+  }
+  const closeLb = () => { if ($('lightbox').hidden) return; $('lightbox').hidden = true; if (lastFocus) lastFocus.focus(); };
+  $('lb-close').addEventListener('click', closeLb);
+  $('lightbox').addEventListener('click', e => { if (e.target === $('lightbox')) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); $('modal').hidden = true; closeLb(); } });
 
   // Rezerwacja stolika
   const pad = n => String(n).padStart(2, '0');
@@ -520,14 +634,14 @@ body.has-cart{padding-bottom:92px}
   const resFrom = Math.min(...allH.map(r => r[0])), resTo = Math.max(...allH.map(r => r[1])) - 1;
   for (let h = resFrom; h <= resTo; h++) ['00', '30'].forEach(m => $('r-time').add(new Option(`${h}:${m}`)));
   $('r-time').value = `${Math.min(Math.max(resFrom, 14), resTo)}:00`;
-  for (let p = 1; p <= 10; p++) $('r-people').add(new Option(p === 1 ? '1 osoba' : `${p} ${p < 5 ? 'osoby' : 'osób'}`, p));
+  for (let p = 1; p <= 12; p++) $('r-people').add(new Option(p === 1 ? '1 osoba' : `${p} ${p < 5 ? 'osoby' : 'osób'}`, p));
   $('r-people').value = '2';
   $('reserve').addEventListener('submit', e => {
     e.preventDefault();
     const [y, m, d] = $('r-date').value.split('-').map(Number);
     const date = new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, d));
     const ok = $('reserve-ok');
-    ok.textContent = `Dziękujemy, ${$('r-name').value.trim()}! Stolik (${$('r-people').selectedOptions[0].text}) czeka na Ciebie: ${date}, godz. ${$('r-time').value}. W wersji demo nic nie zostało wysłane.`;
+    ok.textContent = `Dziękujemy, ${$('r-name').value.trim()}! Prośba o stolik (${$('r-people').selectedOptions[0].text}) na ${date}, godz. ${$('r-time').value} – oddzwonimy, żeby ją potwierdzić. (Wersja testowa – nic nie zostało jeszcze wysłane.)`;
     ok.hidden = false;
   });
 

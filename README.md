@@ -1,7 +1,8 @@
-# Projekt demonstracyjny strony – Karczma Pod Lipami
+# Strona Karczmy Pod Lipami – wersja testowa do akceptacji
 
-Nieoficjalny projekt demonstracyjny strony internetowej przygotowany dla: Karczma Pod Lipami. Nie jest to oficjalna strona firmy. Treści, ceny i godziny są przykładowe.
+Wersja testowa strony Karczmy Pod Lipami (Ustroń, ul. Szpitalna 5) z menu i zdjęciami przekazanymi przez Karczmę. Strona nie jest jeszcze opublikowana na stałe (noindex), zamówienia i rezerwacje nie są jeszcze nigdzie wysyłane.
 
-© 2026 Sebastian Jakubiec. Wszelkie prawa zastrzeżone. Projekt graficzny i kod źródłowy nie mogą być kopiowane, modyfikowane ani wykorzystywane bez pisemnej zgody autora.
+Menu, zdjęcia i logo: © Karczma Pod Lipami.
+Projekt graficzny i kod źródłowy: © 2026 Sebastian Jakubiec. Wszelkie prawa zastrzeżone – kod nie może być kopiowany, modyfikowany ani wykorzystywany bez pisemnej zgody autora do czasu przekazania strony zamawiającemu.
 
 Kontakt: https://sebix224.github.io/strony-internetowe/
