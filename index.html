@@ -250,6 +250,15 @@ footer details p{margin-bottom:8px}
 .modal-box p{color:var(--muted)}
 .modal-box .num{display:inline-block;margin:18px 0;padding:10px 18px;border-radius:12px;background:#fff;border:1px dashed var(--terra);font-weight:700;color:var(--terra)}
 .modal-box small{display:block;color:var(--muted);margin-bottom:20px}
+.modal-box{max-height:calc(100vh - 40px);overflow-y:auto}
+.modal-box .sum{white-space:pre-line;text-align:left;font-size:.86rem;line-height:1.5;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 16px;color:var(--text)}
+.modal-box .acts{display:grid;gap:10px}
+.modal-box .acts .btn{width:100%}
+.modal-box small#m-small{margin:16px 0 0}
+.btn-plain{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.reserve-ok .btn{margin-top:12px}
+.modal-box .num{white-space:nowrap}
+@media (max-width:480px){.modal-box{padding:24px 18px}.modal-box img{width:60px;height:60px}.modal-box h3{font-size:1.55rem;margin:6px 0}.modal-box .num{margin:12px 0}}
 
 @media (max-width:980px){
   .menu{display:none}
@@ -361,7 +370,7 @@ footer details p{margin-bottom:8px}
     <div class="sec-head">
       <p class="kicker">Rezerwacja</p>
       <h2>Zarezerwuj stolik</h2>
-      <p>Wybierz dzień, godzinę i liczbę osób – potwierdzimy rezerwację telefonicznie. Większe przyjęcia najlepiej ustalić przez telefon: 787 081 383.</p>
+      <p>Wybierz dzień, godzinę i liczbę osób – rezerwacja przyjdzie do nas SMS-em, a my oddzwonimy, żeby ją potwierdzić. Większe przyjęcia najlepiej ustalić przez telefon: 787 081 383.</p>
     </div>
     <form class="reserve" id="reserve">
       <label>Data<input type="date" id="r-date" required></label>
@@ -374,7 +383,7 @@ footer details p{margin-bottom:8px}
     </form>
     <p class="form-err" id="reserve-err" role="alert" hidden></p>
     <p class="reserve-ok" id="reserve-ok" role="status" hidden></p>
-    <p class="fine">Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
+    <p class="fine">Po kliknięciu „Rezerwuję” przygotujemy SMS z rezerwacją – wystarczy go wysłać ze swojego telefonu. Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
   </div>
 </section>
 
@@ -414,7 +423,7 @@ footer details p{margin-bottom:8px}
     <div>
       <p><b>Kto przetwarza dane:</b> Karczma Pod Lipami, ul. Szpitalna 5, 43-450 Ustroń, tel. 787 081 383, e-mail: stodolapodlipami@gmail.com.</p>
       <p><b>Jakie dane i po co:</b> imię i numer telefonu (oraz ewentualne uwagi) podane w zamówieniu na wynos albo w rezerwacji stolika – wyłącznie po to, żeby zrealizować zamówienie lub rezerwację i skontaktować się w tej sprawie (art. 6 ust. 1 lit. b RODO). Podanie danych jest dobrowolne, ale bez nich nie przyjmiemy zamówienia ani rezerwacji.</p>
-      <p><b>Jak to działa:</b> formularz przesyła dane na naszą skrzynkę e-mail za pośrednictwem usługi FormSubmit (formsubmit.co). Nie przekazujemy ich nikomu innemu i nie wykorzystujemy do reklamy. Przechowujemy je tylko tak długo, jak to potrzebne do realizacji zamówienia lub rezerwacji i ewentualnych rozliczeń.</p>
+      <p><b>Jak to działa:</b> strona przygotowuje treść SMS-a z zamówieniem lub rezerwacją, a Ty wysyłasz go ze swojego telefonu na nasz numer 787 081 383. Strona nie wysyła tych danych na żaden serwer. Nie przekazujemy ich nikomu innemu i nie wykorzystujemy do reklamy. Przechowujemy je tylko tak długo, jak to potrzebne do realizacji zamówienia lub rezerwacji i ewentualnych rozliczeń.</p>
       <p><b>Twoje prawa:</b> masz prawo dostępu do swoich danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, a także prawo skargi do Prezesa UODO. Wystarczy zadzwonić albo napisać na adres powyżej.</p>
       <p><b>Inne:</b> strona zapamiętuje zawartość koszyka tylko w Twojej przeglądarce. Mapa dojazdu pochodzi z Map Google, a czcionki z Google Fonts.</p>
     </div>
@@ -442,7 +451,7 @@ footer details p{margin-bottom:8px}
       </div>
       <button class="btn btn-terra" id="order" type="submit" disabled>Złóż zamówienie</button>
       <p class="form-err" id="order-err" role="alert" hidden></p>
-      <p class="fine">Płatność przy odbiorze. Zamówienie potwierdzimy telefonicznie. Imię i telefon wykorzystamy tylko do kontaktu w sprawie zamówienia.</p>
+      <p class="fine">Zamówienie wyślesz SMS-em – przygotujemy jego treść. Płatność przy odbiorze. Zamówienie potwierdzimy telefonicznie. Imię i telefon wykorzystamy tylko do kontaktu w sprawie zamówienia.</p>
     </form>
   </div>
 </aside>
@@ -450,11 +459,15 @@ footer details p{margin-bottom:8px}
 <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
   <div class="modal-box">
     <img src="img/logo.png" alt="" width="90" height="90">
-    <h3 id="m-title">Dziękujemy!</h3>
+    <h3 id="m-title">Ostatni krok</h3>
     <p id="m-text"></p>
     <div class="num" id="m-num"></div>
-    <small>Jeśli nie oddzwonimy w ciągu 15 minut, prosimy o telefon: <a href="tel:+48787081383">787 081 383</a>.</small>
-    <button class="btn btn-terra" id="m-close">Zamknij</button>
+    <p class="sum" id="m-sum"></p>
+    <div class="acts">
+      <a class="btn btn-terra" id="m-act" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>
+      <button class="btn btn-plain" id="m-close" type="button">Gotowe</button>
+    </div>
+    <small id="m-small">Jeśli nie oddzwonimy w ciągu 15 minut, prosimy o telefon: <a href="tel:+48787081383">787 081 383</a>.</small>
   </div>
 </div>
 
@@ -556,33 +569,20 @@ footer details p{margin-bottom:8px}
   const fmtH = x => `${Math.floor(x)}:${pad(Math.round((x % 1) * 60))}`;
   const nowH = () => { const n = new Date(); return n.getHours() + n.getMinutes() / 60; };
   const digits = s => s.replace(/\D/g, '').length;
-  const TEL_HTML = '<a href="tel:+48787081383">787 081 383</a>';
 
-  // Zamówienia i rezerwacje trafiają na e-mail karczmy przez FormSubmit.
-  // Przy pierwszym zgłoszeniu FormSubmit wysyła na tę skrzynkę link „Activate Form” – po kliknięciu wszystko działa.
-  const MAIL_ENDPOINT = 'https://formsubmit.co/ajax/stodolapodlipami@gmail.com';
-  async function send(data) {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 15000);
-    try {
-      const r = await fetch(MAIL_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.assign({ _template: 'table', _captcha: 'false' }, data)),
-        signal: ctrl.signal
-      });
-      const j = await r.json().catch(() => ({}));
-      return r.ok && String(j.success) === 'true';
-    } catch (e) {
-      return false;
-    } finally {
-      clearTimeout(timer);
-    }
-  }
+  // Zamówienia i rezerwacje przychodzą do karczmy SMS-em: strona przygotowuje treść,
+  // a klient wysyła SMS ze swojego telefonu na 787 081 383. Z komputera SMS-a nie wyśle – wtedy prosimy o telefon.
+  const SMS_TO = '+48787081383';
+  const UA = navigator.userAgent || '';
+  const IOS = /iPhone|iPad|iPod/i.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const MOBILE = IOS || /Android|Mobile|Windows Phone/i.test(UA);
+  const smsLink = body => `sms:${SMS_TO}${IOS ? '&' : '?'}body=${encodeURIComponent(body)}`;
+  const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   let cat = 'wszystko';
   let cart = {};
   let canOrder = false;
+  let pendingOrder = false;
   try { cart = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { cart = {}; }
   Object.keys(cart).forEach(id => { const d = byId(id); if (!d || d.onsite) delete cart[id]; });
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(cart)); } catch (e) {} };
@@ -715,7 +715,7 @@ footer details p{margin-bottom:8px}
   $('close-cart').addEventListener('click', closeCart);
   $('overlay').addEventListener('click', closeCart);
 
-  $('order-form').addEventListener('submit', async e => {
+  $('order-form').addEventListener('submit', e => {
     e.preventDefault();
     fillPickup();
     const err = $('order-err');
@@ -733,33 +733,36 @@ footer details p{margin-bottom:8px}
     const num = 'KPL-' + Math.floor(1000 + Math.random() * 9000);
     const when = $('o-time').value;
     const whenTxt = when === 'jak najszybciej' ? 'jak najszybciej (ok. 30–40 min)' : `dziś, godz. ${when}`;
-    const data = {
-      _subject: `Zamówienie na wynos ${num} – ${zl(sub)} – odbiór: ${whenTxt}`,
-      'Numer zamówienia': num,
-      'Imię': name,
-      'Telefon': phone,
-      'Odbiór': whenTxt
-    };
-    Object.entries(cart).forEach(([id, q], i) => { const d = byId(id); data[`Pozycja ${i + 1}`] = `${q} × ${d.name} – ${zl(d.price * q)}`; });
-    data['Razem (płatność przy odbiorze)'] = zl(sub);
-    data['Uwagi'] = $('o-notes').value.trim() || '–';
-    const btn = $('order');
-    btn.disabled = true; btn.textContent = 'Wysyłanie…';
-    const ok = await send(data);
-    btn.textContent = 'Złóż zamówienie';
-    if (!ok) {
-      err.innerHTML = `Nie udało się wysłać zamówienia. Prosimy o telefon: ${TEL_HTML} – koszyk zostaje zapamiętany.`;
-      err.hidden = false;
-      renderCart();
-      return;
-    }
+    const notes = $('o-notes').value.trim();
+    const lines = Object.entries(cart).map(([id, q]) => { const d = byId(id); return `${q}× ${d.name} – ${zl(d.price * q)}`; });
+    const body = [`Zamówienie ${num} (ze strony)`, ...lines, `Razem: ${zl(sub)} (płatność przy odbiorze)`, `Odbiór: ${whenTxt}`, `Imię: ${name}, tel. ${phone}`]
+      .concat(notes ? [`Uwagi: ${notes}`] : []).join('\n');
+    pendingOrder = true;
     $('m-num').textContent = `Numer zamówienia: ${num}`;
-    $('m-text').textContent = `Zamówienie trafiło do karczmy. Zadzwonimy na numer ${phone}, żeby je potwierdzić. Odbiór: ul. Szpitalna 5, ${whenTxt}. Do zapłaty przy odbiorze: ${zl(sub)}.`;
-    cart = {}; save(); $('o-notes').value = ''; renderCart(); closeCart();
+    $('m-sum').textContent = body;
+    if (MOBILE) {
+      $('m-title').textContent = 'Ostatni krok: wyślij SMS';
+      $('m-text').textContent = `Kliknij przycisk poniżej – otworzy się SMS z zamówieniem do karczmy. Wyślij go bez zmian, a oddzwonimy na numer ${phone}, żeby potwierdzić zamówienie.`;
+      $('m-act').href = smsLink(body);
+      $('m-act').textContent = '📱 Wyślij SMS z zamówieniem';
+      $('m-close').textContent = 'Gotowe – SMS wysłany';
+      $('m-small').style.display = '';
+    } else {
+      $('m-title').textContent = 'Zadzwoń, żeby zamówić';
+      $('m-text').textContent = 'Zamówienia ze strony przychodzą do karczmy SMS-em, a z komputera nie da się go wysłać. Zadzwoń i podaj swoje zamówienie – albo otwórz stronę na telefonie.';
+      $('m-act').href = 'tel:+48787081383';
+      $('m-act').textContent = '📞 Zadzwoń: 787 081 383';
+      $('m-close').textContent = 'Gotowe';
+      $('m-small').style.display = 'none';
+    }
+    closeCart();
     $('modal').hidden = false;
-    $('m-close').focus();
+    $('m-act').focus();
   });
-  $('m-close').addEventListener('click', () => { $('modal').hidden = true; });
+  $('m-close').addEventListener('click', () => {
+    $('modal').hidden = true;
+    if (pendingOrder) { pendingOrder = false; cart = {}; save(); $('o-notes').value = ''; renderCart(); }
+  });
 
   // Galeria i powiększanie zdjęć
   $('gallery').innerHTML = GALLERY.map(([n, cap]) =>
@@ -800,7 +803,7 @@ footer details p{margin-bottom:8px}
   $('r-date').addEventListener('change', fillTimes);
   for (let p = 1; p <= 12; p++) $('r-people').add(new Option(p === 1 ? '1 osoba' : `${p} ${p < 5 ? 'osoby' : 'osób'}`, p));
   $('r-people').value = '2';
-  $('reserve').addEventListener('submit', async e => {
+  $('reserve').addEventListener('submit', e => {
     e.preventDefault();
     const err = $('reserve-err'), ok = $('reserve-ok');
     err.hidden = true; ok.hidden = true;
@@ -814,25 +817,12 @@ footer details p{margin-bottom:8px}
     const [y, m, d] = $('r-date').value.split('-').map(Number);
     const date = new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, d));
     const people = $('r-people').selectedOptions[0].text, time = $('r-time').value;
-    const btn = $('r-send');
-    btn.disabled = true; btn.textContent = 'Wysyłanie…';
-    const sent = await send({
-      _subject: `Rezerwacja stolika – ${date}, godz. ${time}, ${people}`,
-      'Rodzaj': 'Rezerwacja stolika',
-      'Dzień': date,
-      'Godzina': time,
-      'Liczba osób': people,
-      'Imię': name,
-      'Telefon': phone
-    });
-    btn.disabled = false; btn.textContent = 'Rezerwuję';
-    if (!sent) {
-      err.innerHTML = `Nie udało się wysłać rezerwacji. Prosimy o telefon: ${TEL_HTML}.`;
-      err.hidden = false;
-      return;
-    }
-    ok.textContent = `Dziękujemy, ${name}! Prośba o stolik trafiła do karczmy: ${date}, godz. ${time}, ${people}. Oddzwonimy, żeby ją potwierdzić.`;
+    const body = ['Rezerwacja stolika (ze strony)', `${date}, godz. ${time}, ${people}`, `Imię: ${name}, tel. ${phone}`].join('\n');
+    ok.innerHTML = MOBILE
+      ? `Ostatni krok: kliknij przycisk – otworzy się SMS z rezerwacją do karczmy (${esc(date)}, godz. ${esc(time)}, ${esc(people)}). Wyślij go bez zmian, a oddzwonimy na numer ${esc(phone)}, żeby potwierdzić stolik.<br><a class="btn btn-terra" href="${smsLink(body)}">📱 Wyślij SMS z rezerwacją</a>`
+      : `Rezerwacje ze strony przychodzą do karczmy SMS-em, a z komputera nie da się go wysłać. Zadzwoń, żeby zarezerwować stolik (${esc(date)}, godz. ${esc(time)}, ${esc(people)}) – albo otwórz stronę na telefonie.<br><a class="btn btn-terra" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>`;
     ok.hidden = false;
+    ok.querySelector('a').focus();
   });
 
   // Godziny otwarcia na żywo
