@@ -258,6 +258,11 @@ footer details p{margin-bottom:8px}
 .btn-plain{background:transparent;color:var(--text);border:1.5px solid var(--line)}
 .reserve-ok .btn{margin-top:12px}
 .modal-box .num{white-space:nowrap}
+.qr{width:210px;height:210px;margin:4px auto 14px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.qr svg{display:block;width:100%;height:100%}
+.qr[hidden]{display:none}
+.modal-box.qr-mode>img,.modal-box.qr-mode .num{display:none}
+.reserve-ok .qr{margin:14px 0 4px}
 @media (max-width:480px){.modal-box{padding:24px 18px}.modal-box img{width:60px;height:60px}.modal-box h3{font-size:1.55rem;margin:6px 0}.modal-box .num{margin:12px 0}}
 
 @media (max-width:980px){
@@ -383,7 +388,7 @@ footer details p{margin-bottom:8px}
     </form>
     <p class="form-err" id="reserve-err" role="alert" hidden></p>
     <p class="reserve-ok" id="reserve-ok" role="status" hidden></p>
-    <p class="fine">Po kliknięciu „Rezerwuję” przygotujemy SMS z rezerwacją – wystarczy go wysłać ze swojego telefonu. Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
+    <p class="fine">Po kliknięciu „Rezerwuję” przygotujemy SMS z rezerwacją – wystarczy go wysłać ze swojego telefonu (na komputerze pokażemy kod QR do zeskanowania). Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
   </div>
 </section>
 
@@ -425,7 +430,7 @@ footer details p{margin-bottom:8px}
       <p><b>Jakie dane i po co:</b> imię i numer telefonu (oraz ewentualne uwagi) podane w zamówieniu na wynos albo w rezerwacji stolika – wyłącznie po to, żeby zrealizować zamówienie lub rezerwację i skontaktować się w tej sprawie (art. 6 ust. 1 lit. b RODO). Podanie danych jest dobrowolne, ale bez nich nie przyjmiemy zamówienia ani rezerwacji.</p>
       <p><b>Jak to działa:</b> strona przygotowuje treść SMS-a z zamówieniem lub rezerwacją, a Ty wysyłasz go ze swojego telefonu na nasz numer 787 081 383. Strona nie wysyła tych danych na żaden serwer. Nie przekazujemy ich nikomu innemu i nie wykorzystujemy do reklamy. Przechowujemy je tylko tak długo, jak to potrzebne do realizacji zamówienia lub rezerwacji i ewentualnych rozliczeń.</p>
       <p><b>Twoje prawa:</b> masz prawo dostępu do swoich danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, a także prawo skargi do Prezesa UODO. Wystarczy zadzwonić albo napisać na adres powyżej.</p>
-      <p><b>Inne:</b> strona zapamiętuje zawartość koszyka tylko w Twojej przeglądarce. Mapa dojazdu pochodzi z Map Google, a czcionki z Google Fonts.</p>
+      <p><b>Inne:</b> strona zapamiętuje zawartość koszyka tylko w Twojej przeglądarce. Mapa dojazdu pochodzi z Map Google, a czcionki z Google Fonts. Kod QR na komputerze rysuje biblioteka pobierana z cdnjs.cloudflare.com – treść zamówienia nie jest nigdzie wysyłana.</p>
     </div>
   </details>
 </footer>
@@ -451,7 +456,7 @@ footer details p{margin-bottom:8px}
       </div>
       <button class="btn btn-terra" id="order" type="submit" disabled>Złóż zamówienie</button>
       <p class="form-err" id="order-err" role="alert" hidden></p>
-      <p class="fine">Zamówienie wyślesz SMS-em – przygotujemy jego treść. Płatność przy odbiorze. Zamówienie potwierdzimy telefonicznie. Imię i telefon wykorzystamy tylko do kontaktu w sprawie zamówienia.</p>
+      <p class="fine">Zamówienie wyślesz SMS-em – przygotujemy jego treść (na komputerze pokażemy kod QR do zeskanowania telefonem). Płatność przy odbiorze. Zamówienie potwierdzimy telefonicznie. Imię i telefon wykorzystamy tylko do kontaktu w sprawie zamówienia.</p>
     </form>
   </div>
 </aside>
@@ -461,6 +466,7 @@ footer details p{margin-bottom:8px}
     <img src="img/logo.png" alt="" width="90" height="90">
     <h3 id="m-title">Ostatni krok</h3>
     <p id="m-text"></p>
+    <div class="qr" id="m-qr" hidden></div>
     <div class="num" id="m-num"></div>
     <p class="sum" id="m-sum"></p>
     <div class="acts">
@@ -577,6 +583,34 @@ footer details p{margin-bottom:8px}
   const IOS = /iPhone|iPad|iPod/i.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const MOBILE = IOS || /Android|Mobile|Windows Phone/i.test(UA);
   const smsLink = body => `sms:${SMS_TO}${IOS ? '&' : '?'}body=${encodeURIComponent(body)}`;
+  // Na komputerze: kod QR z gotowym SMS-em (format SMSTO, bez polskich znaków – czytają go wszystkie aparaty).
+  const ascii = t => t.replace(/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ×–]/g, c => ({ 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z', 'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z', '×': 'x', '–': '-' }[c])).replace(/[^\x20-\x7e\n]/g, '');
+  let qrLib = null;
+  const loadQR = () => qrLib || (qrLib = new Promise((ok, fail) => {
+    if (window.qrcode) return ok(window.qrcode);
+    const sc = document.createElement('script');
+    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+    sc.integrity = 'sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1';
+    sc.crossOrigin = 'anonymous';
+    sc.onload = () => window.qrcode ? ok(window.qrcode) : fail();
+    sc.onerror = () => { qrLib = null; fail(); };
+    document.head.appendChild(sc);
+  }));
+  async function drawQR(box, body) {
+    box.hidden = true;
+    box.innerHTML = '';
+    try {
+      const make = await loadQR();
+      const qr = make(0, 'M');
+      qr.addData(`SMSTO:${SMS_TO}:${ascii(body)}`);
+      qr.make();
+      box.innerHTML = qr.createSvgTag(4, 0);
+      box.hidden = false;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
   const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   let cat = 'wszystko';
@@ -740,6 +774,8 @@ footer details p{margin-bottom:8px}
     pendingOrder = true;
     $('m-num').textContent = `Numer zamówienia: ${num}`;
     $('m-sum').textContent = body;
+    $('m-qr').hidden = true;
+    document.querySelector('.modal-box').classList.remove('qr-mode');
     if (MOBILE) {
       $('m-title').textContent = 'Ostatni krok: wyślij SMS';
       $('m-text').textContent = `Kliknij przycisk poniżej – otworzy się SMS z zamówieniem do karczmy. Wyślij go bez zmian, a oddzwonimy na numer ${phone}, żeby potwierdzić zamówienie.`;
@@ -748,12 +784,20 @@ footer details p{margin-bottom:8px}
       $('m-close').textContent = 'Gotowe – SMS wysłany';
       $('m-small').style.display = '';
     } else {
-      $('m-title').textContent = 'Zadzwoń, żeby zamówić';
-      $('m-text').textContent = 'Zamówienia ze strony przychodzą do karczmy SMS-em, a z komputera nie da się go wysłać. Zadzwoń i podaj swoje zamówienie – albo otwórz stronę na telefonie.';
+      $('m-title').textContent = 'Zeskanuj kod telefonem';
+      $('m-text').textContent = 'Z komputera nie da się wysłać SMS-a. Zeskanuj ten kod aparatem w telefonie – otworzy się gotowy SMS z zamówieniem do karczmy, wystarczy kliknąć „Wyślij”. Możesz też po prostu zadzwonić i podać zamówienie.';
       $('m-act').href = 'tel:+48787081383';
-      $('m-act').textContent = '📞 Zadzwoń: 787 081 383';
+      $('m-act').textContent = '📞 Albo zadzwoń: 787 081 383';
       $('m-close').textContent = 'Gotowe';
-      $('m-small').style.display = 'none';
+      $('m-small').style.display = '';
+      document.querySelector('.modal-box').classList.add('qr-mode');
+      drawQR($('m-qr'), body).then(shown => {
+        if (shown) return;
+        document.querySelector('.modal-box').classList.remove('qr-mode');
+        $('m-title').textContent = 'Zadzwoń, żeby zamówić';
+        $('m-text').textContent = 'Z komputera nie da się wysłać SMS-a. Zadzwoń i podaj swoje zamówienie – albo otwórz stronę na telefonie.';
+        $('m-act').textContent = '📞 Zadzwoń: 787 081 383';
+      });
     }
     closeCart();
     $('modal').hidden = false;
@@ -820,9 +864,12 @@ footer details p{margin-bottom:8px}
     const body = ['Rezerwacja stolika (ze strony)', `${date}, godz. ${time}, ${people}`, `Imię: ${name}, tel. ${phone}`].join('\n');
     ok.innerHTML = MOBILE
       ? `Ostatni krok: kliknij przycisk – otworzy się SMS z rezerwacją do karczmy (${esc(date)}, godz. ${esc(time)}, ${esc(people)}). Wyślij go bez zmian, a oddzwonimy na numer ${esc(phone)}, żeby potwierdzić stolik.<br><a class="btn btn-terra" href="${smsLink(body)}">📱 Wyślij SMS z rezerwacją</a>`
-      : `Rezerwacje ze strony przychodzą do karczmy SMS-em, a z komputera nie da się go wysłać. Zadzwoń, żeby zarezerwować stolik (${esc(date)}, godz. ${esc(time)}, ${esc(people)}) – albo otwórz stronę na telefonie.<br><a class="btn btn-terra" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>`;
+      : `Z komputera nie da się wysłać SMS-a. Zeskanuj kod aparatem w telefonie – otworzy się gotowy SMS z rezerwacją do karczmy (${esc(date)}, godz. ${esc(time)}, ${esc(people)}), wystarczy kliknąć „Wyślij”. Możesz też zadzwonić.<div class="qr" id="r-qr" hidden></div><a class="btn btn-terra" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>`;
     ok.hidden = false;
     ok.querySelector('a').focus();
+    if (!MOBILE) drawQR($('r-qr'), body).then(shown => {
+      if (!shown) ok.firstChild.textContent = `Z komputera nie da się wysłać SMS-a. Zadzwoń, żeby zarezerwować stolik (${date}, godz. ${time}, ${people}) – albo otwórz stronę na telefonie.`;
+    });
   });
 
   // Godziny otwarcia na żywo
