@@ -261,9 +261,7 @@ footer details p{margin-bottom:8px}
 .qr{width:210px;height:210px;margin:4px auto 14px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:14px}
 .qr svg{display:block;width:100%;height:100%}
 .qr[hidden]{display:none}
-.modal-box.qr-mode>img,.modal-box.qr-mode .num{display:none}
-.reserve-ok .qr{margin:14px 0 4px}
-@media (max-width:480px){.modal-box{padding:24px 18px}.modal-box img{width:60px;height:60px}.modal-box h3{font-size:1.55rem;margin:6px 0}.modal-box .num{margin:12px 0}}
+.modal-box.qr-mode>img,.modal-box.qr-mode .num{display:none}@media (max-width:480px){.modal-box{padding:24px 18px}.modal-box img{width:60px;height:60px}.modal-box h3{font-size:1.55rem;margin:6px 0}.modal-box .num{margin:12px 0}}
 
 @media (max-width:980px){
   .menu{display:none}
@@ -388,7 +386,7 @@ footer details p{margin-bottom:8px}
     </form>
     <p class="form-err" id="reserve-err" role="alert" hidden></p>
     <p class="reserve-ok" id="reserve-ok" role="status" hidden></p>
-    <p class="fine">Po kliknięciu „Rezerwuję” przygotujemy SMS z rezerwacją – wystarczy go wysłać ze swojego telefonu (na komputerze pokażemy kod QR do zeskanowania). Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
+    <p class="fine">Po kliknięciu „Rezerwuję” przygotujemy SMS z rezerwacją – wystarczy go wysłać ze swojego telefonu (z komputera prosimy o telefon). Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
   </div>
 </section>
 
@@ -864,12 +862,9 @@ footer details p{margin-bottom:8px}
     const body = ['Rezerwacja stolika (ze strony)', `${date}, godz. ${time}, ${people}`, `Imię: ${name}, tel. ${phone}`].join('\n');
     ok.innerHTML = MOBILE
       ? `Ostatni krok: kliknij przycisk – otworzy się SMS z rezerwacją do karczmy (${esc(date)}, godz. ${esc(time)}, ${esc(people)}). Wyślij go bez zmian, a oddzwonimy na numer ${esc(phone)}, żeby potwierdzić stolik.<br><a class="btn btn-terra" href="${smsLink(body)}">📱 Wyślij SMS z rezerwacją</a>`
-      : `Z komputera nie da się wysłać SMS-a. Zeskanuj kod aparatem w telefonie – otworzy się gotowy SMS z rezerwacją do karczmy (${esc(date)}, godz. ${esc(time)}, ${esc(people)}), wystarczy kliknąć „Wyślij”. Możesz też zadzwonić.<div class="qr" id="r-qr" hidden></div><a class="btn btn-terra" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>`;
+      : `Rezerwacje z komputera przyjmujemy telefonicznie – zadzwoń i podaj: ${esc(date)}, godz. ${esc(time)}, ${esc(people)}. Od razu potwierdzimy stolik. Jesteśmy pod telefonem w godzinach otwarcia.<br><a class="btn btn-terra" href="tel:+48787081383">📞 Zadzwoń: 787 081 383</a>`;
     ok.hidden = false;
     ok.querySelector('a').focus();
-    if (!MOBILE) drawQR($('r-qr'), body).then(shown => {
-      if (!shown) ok.firstChild.textContent = `Z komputera nie da się wysłać SMS-a. Zadzwoń, żeby zarezerwować stolik (${date}, godz. ${time}, ${people}) – albo otwórz stronę na telefonie.`;
-    });
   });
 
   // Godziny otwarcia na żywo
