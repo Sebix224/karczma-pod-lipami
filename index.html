@@ -5,9 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Karczma Pod Lipami – Ustroń | domowa kuchnia, przyjęcia, piwo z beczki</title>
 <meta name="description" content="Karczma Pod Lipami w Ustroniu, ul. Szpitalna 5 – domowa kuchnia polska i regionalna: golonko, rolada wołowa, pstrąg z grilla, pierogi rzemieślnicze. Menu z cenami, zamówienia na wynos, rezerwacja stolika i przyjęcia.">
-<!-- Wersja testowa do akceptacji: przed publikacją usunąć noindex i pasek testowy -->
-<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://sebix224.github.io/karczma-pod-lipami/">
+<meta name="theme-color" content="#7a2e1f">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Karczma Pod Lipami">
+<meta property="og:title" content="Karczma Pod Lipami – Ustroń | domowa kuchnia, przyjęcia, piwo z beczki">
+<meta property="og:description" content="Domowa kuchnia polska i regionalna w Ustroniu, ul. Szpitalna 5. Menu z cenami, zamówienia na wynos i rezerwacja stolika.">
+<meta property="og:url" content="https://sebix224.github.io/karczma-pod-lipami/">
+<meta property="og:image" content="https://sebix224.github.io/karczma-pod-lipami/img/dania/13.jpg">
 <link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Karczma Pod Lipami",
+  "alternateName": "Stodoła Pod Lipami",
+  "url": "https://sebix224.github.io/karczma-pod-lipami/",
+  "image": "https://sebix224.github.io/karczma-pod-lipami/img/dania/13.jpg",
+  "logo": "https://sebix224.github.io/karczma-pod-lipami/img/logo.png",
+  "telephone": "+48 787 081 383",
+  "email": "stodolapodlipami@gmail.com",
+  "address": {"@type": "PostalAddress", "streetAddress": "ul. Szpitalna 5", "postalCode": "43-450", "addressLocality": "Ustroń", "addressCountry": "PL"},
+  "servesCuisine": ["polska", "regionalna"],
+  "priceRange": "15–87 zł",
+  "hasMenu": "https://sebix224.github.io/karczma-pod-lipami/#menu",
+  "acceptsReservations": true,
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "12:00", "closes": "21:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "10:00", "closes": "21:00"}
+  ],
+  "sameAs": ["https://www.facebook.com/profile.php?id=61580206990534"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -30,8 +61,6 @@ section{padding:96px 0}
 .sec-head.center{text-align:center;margin-inline:auto}
 .sec-head h2{font-size:clamp(2.1rem,4.2vw,3.2rem);margin:6px 0 14px}
 .sec-head p{color:var(--muted);font-size:1.05rem}
-
-.test-bar{background:#e9c46a;color:#2b1d12;font-size:.82rem;text-align:center;padding:7px 16px;font-weight:500}
 
 header{position:sticky;top:0;z-index:40;background:rgba(251,245,236,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
@@ -178,7 +207,8 @@ body.has-cart{padding-bottom:92px}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
 .drawer-head h3{font-size:1.6rem}
 .x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:1.3rem;cursor:pointer}
-.drawer-body{flex:1;overflow-y:auto;padding:16px 24px}
+.drawer{overflow-y:auto;overscroll-behavior:contain}
+.drawer-body{flex:1 0 auto;padding:16px 24px}
 .line{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 0;border-bottom:1px dashed var(--line)}
 .line b{color:var(--dark)}
 .line .sum{font-weight:700;color:var(--dark)}
@@ -194,6 +224,23 @@ body.has-cart{padding-bottom:92px}
 .rows div{display:flex;justify-content:space-between}
 .rows .grand{font-family:Fraunces,serif;font-size:1.4rem;color:var(--dark);font-weight:600;padding-top:8px;border-top:1px solid var(--line);margin-top:4px}
 .drawer-foot .btn{width:100%}
+.ofields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.ofields label{display:grid;gap:4px;font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);min-width:0}
+.ofields .full{grid-column:1/-1}
+.ofields input,.ofields select{font-size:1rem;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--cream);color:var(--dark);width:100%;min-width:0}
+.ofields input:focus,.ofields select:focus{outline:none;border-color:var(--terra)}
+.closed-note{background:#f6ddd2;color:var(--terra-2);border-radius:12px;padding:10px 14px;font-size:.88rem;font-weight:500;margin-bottom:12px}
+.closed-note[hidden]{display:none}
+.form-err{color:#b3261e;font-size:.88rem;font-weight:500;margin-top:10px}
+.form-err[hidden]{display:none}
+.reserve-sec .form-err{color:#ffb4a6}
+.fine{font-size:.76rem;color:var(--muted);margin-top:10px;line-height:1.45}
+.reserve-sec .fine{color:#8f7d6e;margin-top:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+footer details{margin-top:10px}
+footer summary{cursor:pointer;text-decoration:underline;display:inline-block}
+footer details div{max-width:720px;margin:12px auto 0;text-align:left;line-height:1.6;font-size:.84rem}
+footer details p{margin-bottom:8px}
 
 .modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;background:rgba(43,29,18,.55)}
 .modal[hidden]{display:none}
@@ -233,8 +280,6 @@ body.has-cart{padding-bottom:92px}
 </head>
 <body>
 
-<div class="test-bar">Wersja testowa strony do akceptacji – zamówienia i rezerwacje nie są jeszcze nigdzie wysyłane.</div>
-
 <header>
   <nav class="wrap nav">
     <a href="#" class="logo"><img src="img/logo.png" alt="" width="52" height="52"><span>Karczma <em>Pod Lipami</em><small>Ustroń · Szpitalna 5</small></span></a>
@@ -263,7 +308,7 @@ body.has-cart{padding-bottom:92px}
         <a href="#menu" class="btn btn-terra">Zobacz menu</a>
         <a href="#stolik" class="btn btn-outline">Zarezerwuj stolik</a>
       </div>
-      <ul class="info"><li>⭐ 4,4 w Google (379 opinii)</li><li>🎉 Przyjęcia i imprezy</li><li><a href="tel:+48787081383">📞 787 081 383</a></li></ul>
+      <ul class="info"><li>⭐ 4,5 w Google (ponad 450 opinii)</li><li>🎉 Przyjęcia i imprezy</li><li><a href="tel:+48787081383">📞 787 081 383</a></li></ul>
     </div>
     <div class="dish-wrap">
       <div class="board" aria-hidden="true"></div>
@@ -323,11 +368,14 @@ body.has-cart{padding-bottom:92px}
       <label>Data<input type="date" id="r-date" required></label>
       <label>Godzina<select id="r-time"></select></label>
       <label>Liczba osób<select id="r-people"></select></label>
-      <label>Imię<input id="r-name" placeholder="Twoje imię" required autocomplete="given-name"></label>
-      <label>Telefon<input id="r-phone" type="tel" placeholder="np. 600 000 000" required autocomplete="tel"></label>
-      <button class="btn btn-terra" type="submit">Rezerwuję</button>
+      <label>Imię<input id="r-name" placeholder="Twoje imię" required maxlength="60" autocomplete="given-name"></label>
+      <label>Telefon<input id="r-phone" type="tel" placeholder="np. 600 000 000" required pattern="[0-9 +\(\)\-]{9,20}" title="Podaj numer telefonu (co najmniej 9 cyfr)" autocomplete="tel"></label>
+      <input class="hp" id="r-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-terra" type="submit" id="r-send">Rezerwuję</button>
     </form>
-    <p class="reserve-ok" id="reserve-ok" hidden></p>
+    <p class="form-err" id="reserve-err" role="alert" hidden></p>
+    <p class="reserve-ok" id="reserve-ok" role="status" hidden></p>
+    <p class="fine">Rezerwacja jest ważna po potwierdzeniu telefonicznym. Imię i telefon wykorzystamy tylko do kontaktu w sprawie rezerwacji.</p>
   </div>
 </section>
 
@@ -362,6 +410,16 @@ body.has-cart{padding-bottom:92px}
   <img src="img/logo.png" alt="" width="64" height="64">
   © 2026 Karczma Pod Lipami · ul. Szpitalna 5, 43-450 Ustroń · tel. 787 081 383<br>
   Strona: Sebastian Jakubiec
+  <details>
+    <summary>Prywatność i dane osobowe</summary>
+    <div>
+      <p><b>Kto przetwarza dane:</b> Karczma Pod Lipami, ul. Szpitalna 5, 43-450 Ustroń, tel. 787 081 383, e-mail: stodolapodlipami@gmail.com.</p>
+      <p><b>Jakie dane i po co:</b> imię i numer telefonu (oraz ewentualne uwagi) podane w zamówieniu na wynos albo w rezerwacji stolika – wyłącznie po to, żeby zrealizować zamówienie lub rezerwację i skontaktować się w tej sprawie (art. 6 ust. 1 lit. b RODO). Podanie danych jest dobrowolne, ale bez nich nie przyjmiemy zamówienia ani rezerwacji.</p>
+      <p><b>Jak to działa:</b> formularz przesyła dane na naszą skrzynkę e-mail za pośrednictwem usługi FormSubmit (formsubmit.co). Nie przekazujemy ich nikomu innemu i nie wykorzystujemy do reklamy. Przechowujemy je tylko tak długo, jak to potrzebne do realizacji zamówienia lub rezerwacji i ewentualnych rozliczeń.</p>
+      <p><b>Twoje prawa:</b> masz prawo dostępu do swoich danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, a także prawo skargi do Prezesa UODO. Wystarczy zadzwonić albo napisać na adres powyżej.</p>
+      <p><b>Inne:</b> strona zapamiętuje zawartość koszyka tylko w Twojej przeglądarce. Mapa dojazdu pochodzi z Map Google, a czcionki z Google Fonts.</p>
+    </div>
+  </details>
 </footer>
 
 <button class="cart-btn" id="cart-btn" type="button"><span class="count" id="cart-count">0</span><span class="lbl" id="cart-lbl" aria-live="polite">Zobacz zamówienie</span><span class="tot" id="cart-total">0 zł</span></button>
@@ -374,7 +432,19 @@ body.has-cart{padding-bottom:92px}
     <div class="rows">
       <div class="grand"><span>Razem</span><span id="grand">0 zł</span></div>
     </div>
-    <button class="btn btn-terra" id="order" disabled>Złóż zamówienie</button>
+    <form id="order-form" novalidate>
+      <p class="closed-note" id="closed-note" hidden></p>
+      <div class="ofields">
+        <label>Imię<input id="o-name" required maxlength="60" autocomplete="given-name" placeholder="Twoje imię"></label>
+        <label>Telefon<input id="o-phone" type="tel" required pattern="[0-9 +\(\)\-]{9,20}" title="Podaj numer telefonu (co najmniej 9 cyfr)" autocomplete="tel" placeholder="600 000 000"></label>
+        <label class="full">Odbiór<select id="o-time"></select></label>
+        <label class="full">Uwagi (opcjonalnie)<input id="o-notes" maxlength="300" placeholder="np. bez cebuli, sos osobno"></label>
+        <input class="hp" id="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </div>
+      <button class="btn btn-terra" id="order" type="submit" disabled>Złóż zamówienie</button>
+      <p class="form-err" id="order-err" role="alert" hidden></p>
+      <p class="fine">Płatność przy odbiorze. Zamówienie potwierdzimy telefonicznie. Imię i telefon wykorzystamy tylko do kontaktu w sprawie zamówienia.</p>
+    </form>
   </div>
 </aside>
 
@@ -384,7 +454,7 @@ body.has-cart{padding-bottom:92px}
     <h3 id="m-title">Dziękujemy!</h3>
     <p id="m-text"></p>
     <div class="num" id="m-num"></div>
-    <small>Wersja testowa – zamówienie nie zostało jeszcze nigdzie wysłane.</small>
+    <small>Jeśli nie oddzwonimy w ciągu 15 minut, prosimy o telefon: <a href="tel:+48787081383">787 081 383</a>.</small>
     <button class="btn btn-terra" id="m-close">Zamknij</button>
   </div>
 </div>
@@ -440,7 +510,7 @@ body.has-cart{padding-bottom:92px}
     {id:38,cat:"dodatki",name:"Zestaw surówek / kapusta zasmażana",desc:"150 g",price:10,ico:"🥗"},
     {id:39,cat:"dodatki",name:"Bukiet gotowanych warzyw",desc:"150 g",price:12,ico:"🥦"},
     {id:40,cat:"dodatki",name:"Sos: ketchup, majonez, musztarda lub czosnkowy",desc:"",price:5,ico:"🥫"},
-    {id:41,cat:"desery",name:"Szarlotka na ciepło",desc:"150 g; 2 gałki lodów, bita śmietana",price:25,ico:"🥧"},
+    {id:41,cat:"desery",name:"Szarlotka na ciepło",desc:"150 g; 2 gałki lodów, bita śmietana",price:25,ico:"🥧",img:"05"},
     {id:42,cat:"desery",name:"Torcik miodowy",desc:"120 g",price:15,ico:"🍰"},
     {id:43,cat:"desery",name:"Pucharek lodowy z owocami",desc:"3 gałki lodów, owoce, bita śmietana, polewa",price:24,ico:"🍨"},
     {id:44,cat:"desery",name:"Pucharek lodowy z advocatem",desc:"3 gałki lodów, advocat, bita śmietana",price:24,ico:"🍨"},
@@ -474,7 +544,7 @@ body.has-cart{padding-bottom:92px}
     {id:72,cat:"piwa",name:"Piwo Free 0%",desc:"0,5 l, różne smaki",price:12,ico:"🍺"},
     {id:73,cat:"piwa",name:"Karmi Classic 0%",desc:"0,5 l",price:12,ico:"🍺"}
   ];
-  const GALLERY = [["13","Golonko pieczone"],["04","Rolada wołowa z kluskami śląskimi"],["01","Pstrąg z grilla"],["06","Udziec jagnięcy"],["11","Kotlet schabowy"],["08","Pieczeń wieprzowa"],["02","Sandacz z pieca"],["07","Placki z gulaszem"],["03","Filet z indyka w sosie pieczarkowym"],["12","Grillowany oscypek i przystawki"],["05","Deser"],["09","Rolada wołowa"]];
+  const GALLERY = [["13","Golonko pieczone"],["04","Rolada wołowa z kluskami śląskimi"],["01","Pstrąg z grilla"],["06","Udziec jagnięcy"],["11","Kotlet schabowy"],["08","Pieczeń wieprzowa"],["02","Sandacz z pieca"],["07","Placki z gulaszem"],["03","Filet z indyka w sosie pieczarkowym"],["12","Grillowany oscypek i przystawki"],["05","Szarlotka na ciepło"],["09","Rolada wołowa"]];
   const STORE = 'karczma-pod-lipami-koszyk';
   const RANGES = {"0":[10,21],"1":[12,21],"2":[12,21],"3":[12,21],"4":[12,21],"5":[12,21],"6":[10,21]};
   const DAY_NAMES = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
@@ -483,9 +553,37 @@ body.has-cart{padding-bottom:92px}
   const $ = id => document.getElementById(id);
   const zl = n => `${n.toFixed(2).replace('.', ',').replace(',00', '')} zł`;
   const byId = id => MENU.find(m => m.id == id);
+  const pad = n => String(n).padStart(2, '0');
+  const fmtH = x => `${Math.floor(x)}:${pad(Math.round((x % 1) * 60))}`;
+  const nowH = () => { const n = new Date(); return n.getHours() + n.getMinutes() / 60; };
+  const digits = s => s.replace(/\D/g, '').length;
+  const TEL_HTML = '<a href="tel:+48787081383">787 081 383</a>';
+
+  // Zamówienia i rezerwacje trafiają na e-mail karczmy przez FormSubmit.
+  // Przy pierwszym zgłoszeniu FormSubmit wysyła na tę skrzynkę link „Activate Form” – po kliknięciu wszystko działa.
+  const MAIL_ENDPOINT = 'https://formsubmit.co/ajax/stodolapodlipami@gmail.com';
+  async function send(data) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const r = await fetch(MAIL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({ _template: 'table', _captcha: 'false' }, data)),
+        signal: ctrl.signal
+      });
+      const j = await r.json().catch(() => ({}));
+      return r.ok && String(j.success) === 'true';
+    } catch (e) {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
 
   let cat = 'wszystko';
   let cart = {};
+  let canOrder = false;
   try { cart = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { cart = {}; }
   Object.keys(cart).forEach(id => { const d = byId(id); if (!d || d.onsite) delete cart[id]; });
   const save = () => { try { localStorage.setItem(STORE, JSON.stringify(cart)); } catch (e) {} };
@@ -583,7 +681,26 @@ body.has-cart{padding-bottom:92px}
         <div class="qty"><button type="button" data-dec="${id}" aria-label="Mniej">−</button><span>${cart[id]}</span><button type="button" data-inc="${id}" aria-label="Więcej">+</button><span class="unit">${zl(d.price)} / szt.</span></div></div>`;
     }).join('') : '<div class="cart-empty"><div>🧺</div>Koszyk jest pusty.<br>Dodaj coś pysznego z menu!</div>';
     $('grand').textContent = zl(sub);
-    $('order').disabled = count === 0;
+    $('order').disabled = count === 0 || !canOrder;
+  }
+
+  // Godziny odbioru: dziś, w godzinach otwarcia, min. 30 min na przygotowanie, ostatni odbiór 30 min przed zamknięciem
+  function fillPickup() {
+    const sel = $('o-time'), prev = sel.value;
+    const d = new Date().getDay(), r = RANGES[d], h = nowH();
+    sel.innerHTML = '';
+    if (r) {
+      const last = r[1] - 0.5;
+      const start = Math.ceil(Math.max(r[0] + 0.5, h + 0.5) * 4) / 4;
+      if (h >= r[0] && start <= last) sel.add(new Option('Jak najszybciej (ok. 30–40 min)', 'jak najszybciej'));
+      for (let x = start; x <= last + 1e-9; x += 0.25) sel.add(new Option(`Dziś, ${fmtH(x)}`, fmtH(x)));
+    }
+    if ([...sel.options].some(o => o.value === prev)) sel.value = prev;
+    canOrder = sel.options.length > 0;
+    sel.disabled = !canOrder;
+    let nd = (d + 1) % 7; while (!RANGES[nd]) nd = (nd + 1) % 7;
+    $('closed-note').textContent = canOrder ? '' : `Na dziś nie przyjmujemy już zamówień na wynos. Zapraszamy ${nd === (d + 1) % 7 ? 'jutro' : 'wkrótce'} od ${RANGES[nd][0]}:00 – koszyk zostanie zapamiętany.`;
+    $('closed-note').hidden = canOrder;
   }
 
   $('cart-lines').addEventListener('click', e => {
@@ -592,19 +709,54 @@ body.has-cart{padding-bottom:92px}
     if (dec) change(dec, -1);
   });
 
-  const openCart = () => { $('drawer').classList.add('show'); $('overlay').classList.add('show'); $('drawer').setAttribute('aria-hidden', 'false'); };
+  const openCart = () => { fillPickup(); renderCart(); $('drawer').classList.add('show'); $('overlay').classList.add('show'); $('drawer').setAttribute('aria-hidden', 'false'); };
   const closeCart = () => { $('drawer').classList.remove('show'); $('overlay').classList.remove('show'); $('drawer').setAttribute('aria-hidden', 'true'); };
   $('cart-btn').addEventListener('click', openCart);
   $('hcart').addEventListener('click', openCart);
   $('close-cart').addEventListener('click', closeCart);
   $('overlay').addEventListener('click', closeCart);
 
-  $('order').addEventListener('click', () => {
-    const { sub } = totals();
+  $('order-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    fillPickup();
+    const err = $('order-err');
+    err.hidden = true;
+    const { sub, count } = totals();
+    if (!count || !canOrder) { renderCart(); return; }
+    const name = $('o-name').value.trim(), phone = $('o-phone').value.trim();
+    if (!name || !$('o-phone').checkValidity() || digits(phone) < 9) {
+      err.textContent = 'Podaj imię i numer telefonu (co najmniej 9 cyfr) – zadzwonimy, żeby potwierdzić zamówienie.';
+      err.hidden = false;
+      (name ? $('o-phone') : $('o-name')).focus();
+      return;
+    }
+    if ($('o-hp').value) return;
     const num = 'KPL-' + Math.floor(1000 + Math.random() * 9000);
+    const when = $('o-time').value;
+    const whenTxt = when === 'jak najszybciej' ? 'jak najszybciej (ok. 30–40 min)' : `dziś, godz. ${when}`;
+    const data = {
+      _subject: `Zamówienie na wynos ${num} – ${zl(sub)} – odbiór: ${whenTxt}`,
+      'Numer zamówienia': num,
+      'Imię': name,
+      'Telefon': phone,
+      'Odbiór': whenTxt
+    };
+    Object.entries(cart).forEach(([id, q], i) => { const d = byId(id); data[`Pozycja ${i + 1}`] = `${q} × ${d.name} – ${zl(d.price * q)}`; });
+    data['Razem (płatność przy odbiorze)'] = zl(sub);
+    data['Uwagi'] = $('o-notes').value.trim() || '–';
+    const btn = $('order');
+    btn.disabled = true; btn.textContent = 'Wysyłanie…';
+    const ok = await send(data);
+    btn.textContent = 'Złóż zamówienie';
+    if (!ok) {
+      err.innerHTML = `Nie udało się wysłać zamówienia. Prosimy o telefon: ${TEL_HTML} – koszyk zostaje zapamiętany.`;
+      err.hidden = false;
+      renderCart();
+      return;
+    }
     $('m-num').textContent = `Numer zamówienia: ${num}`;
-    $('m-text').textContent = `Do zapłaty przy odbiorze: ${zl(sub)}. Zadzwonimy, gdy zamówienie będzie gotowe.`;
-    cart = {}; save(); renderCart(); closeCart();
+    $('m-text').textContent = `Zamówienie trafiło do karczmy. Zadzwonimy na numer ${phone}, żeby je potwierdzić. Odbiór: ul. Szpitalna 5, ${whenTxt}. Do zapłaty przy odbiorze: ${zl(sub)}.`;
+    cart = {}; save(); $('o-notes').value = ''; renderCart(); closeCart();
     $('modal').hidden = false;
     $('m-close').focus();
   });
@@ -625,23 +777,62 @@ body.has-cart{padding-bottom:92px}
   $('lightbox').addEventListener('click', e => { if (e.target === $('lightbox')) closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); $('modal').hidden = true; closeLb(); } });
 
-  // Rezerwacja stolika
-  const pad = n => String(n).padStart(2, '0');
+  // Rezerwacja stolika: godziny według dnia tygodnia, ostatnia rezerwacja godzinę przed zamknięciem
   const now = new Date();
-  const todayStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+  const dateStr = dt => `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())}`;
+  const todayStr = dateStr(now);
   $('r-date').min = todayStr; $('r-date').value = todayStr;
-  const allH = Object.values(RANGES).filter(Boolean);
-  const resFrom = Math.min(...allH.map(r => r[0])), resTo = Math.max(...allH.map(r => r[1])) - 1;
-  for (let h = resFrom; h <= resTo; h++) ['00', '30'].forEach(m => $('r-time').add(new Option(`${h}:${m}`)));
-  $('r-time').value = `${Math.min(Math.max(resFrom, 14), resTo)}:00`;
+  $('r-time').required = true;
+  function fillTimes() {
+    const sel = $('r-time'), prev = sel.value;
+    sel.innerHTML = '';
+    const [y, m, d] = $('r-date').value.split('-').map(Number);
+    if (y) {
+      const r = RANGES[new Date(y, m - 1, d).getDay()];
+      const isToday = $('r-date').value === todayStr, h = nowH();
+      if (r) for (let x = r[0]; x <= r[1] - 1; x += 0.5) if (!isToday || x >= h + 1) sel.add(new Option(fmtH(x)));
+    }
+    if (!sel.options.length) { sel.add(new Option('brak wolnych godzin – wybierz inny dzień', '')); return false; }
+    const vals = [...sel.options].map(o => o.value);
+    sel.value = vals.includes(prev) ? prev : (vals.includes('18:00') ? '18:00' : vals[0]);
+    return true;
+  }
+  if (!fillTimes()) { const t = new Date(now); t.setDate(t.getDate() + 1); $('r-date').value = dateStr(t); fillTimes(); }
+  $('r-date').addEventListener('change', fillTimes);
   for (let p = 1; p <= 12; p++) $('r-people').add(new Option(p === 1 ? '1 osoba' : `${p} ${p < 5 ? 'osoby' : 'osób'}`, p));
   $('r-people').value = '2';
-  $('reserve').addEventListener('submit', e => {
+  $('reserve').addEventListener('submit', async e => {
     e.preventDefault();
+    const err = $('reserve-err'), ok = $('reserve-ok');
+    err.hidden = true; ok.hidden = true;
+    if ($('r-hp').value) return;
+    const name = $('r-name').value.trim(), phone = $('r-phone').value.trim();
+    if (!name || digits(phone) < 9 || !$('r-time').value) {
+      err.textContent = 'Uzupełnij imię, numer telefonu (co najmniej 9 cyfr) i godzinę.';
+      err.hidden = false;
+      return;
+    }
     const [y, m, d] = $('r-date').value.split('-').map(Number);
     const date = new Intl.DateTimeFormat('pl-PL', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(y, m - 1, d));
-    const ok = $('reserve-ok');
-    ok.textContent = `Dziękujemy, ${$('r-name').value.trim()}! Prośba o stolik (${$('r-people').selectedOptions[0].text}) na ${date}, godz. ${$('r-time').value} – oddzwonimy, żeby ją potwierdzić. (Wersja testowa – nic nie zostało jeszcze wysłane.)`;
+    const people = $('r-people').selectedOptions[0].text, time = $('r-time').value;
+    const btn = $('r-send');
+    btn.disabled = true; btn.textContent = 'Wysyłanie…';
+    const sent = await send({
+      _subject: `Rezerwacja stolika – ${date}, godz. ${time}, ${people}`,
+      'Rodzaj': 'Rezerwacja stolika',
+      'Dzień': date,
+      'Godzina': time,
+      'Liczba osób': people,
+      'Imię': name,
+      'Telefon': phone
+    });
+    btn.disabled = false; btn.textContent = 'Rezerwuję';
+    if (!sent) {
+      err.innerHTML = `Nie udało się wysłać rezerwacji. Prosimy o telefon: ${TEL_HTML}.`;
+      err.hidden = false;
+      return;
+    }
+    ok.textContent = `Dziękujemy, ${name}! Prośba o stolik trafiła do karczmy: ${date}, godz. ${time}, ${people}. Oddzwonimy, żeby ją potwierdzić.`;
     ok.hidden = false;
   });
 
@@ -658,6 +849,7 @@ body.has-cart{padding-bottom:92px}
   if (todayLi) todayLi.classList.add('today');
 
   renderMenu();
+  fillPickup();
   renderCart();
 })();
 </script>
